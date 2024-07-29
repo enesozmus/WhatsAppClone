@@ -11,6 +11,7 @@
 		DFC014652C57B9620081E0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC014642C57B9620081E0B6 /* Assets.xcassets */; };
 		DFC014682C57B9620081E0B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC014672C57B9620081E0B6 /* Preview Assets.xcassets */; };
 		DFC014702C57B9B00081E0B6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0146F2C57B9B00081E0B6 /* MainTabView.swift */; };
+		DFC014732C57C0A20081E0B6 /* UpdatesTabScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC014722C57C0A20081E0B6 /* UpdatesTabScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		DFC014672C57B9620081E0B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DFC0146F2C57B9B00081E0B6 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		DFC014712C57BE920081E0B6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DFC014722C57C0A20081E0B6 /* UpdatesTabScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTabScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				DFC0146E2C57B9830081E0B6 /* App */,
 				DFC014662C57B9620081E0B6 /* Preview Content */,
 				DFC0146F2C57B9B00081E0B6 /* MainTabView.swift */,
+				DFC014722C57C0A20081E0B6 /* UpdatesTabScreenView.swift */,
 			);
 			path = WhatsAppClone;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFC014732C57C0A20081E0B6 /* UpdatesTabScreenView.swift in Sources */,
 				DFC014612C57B9610081E0B6 /* WhatsAppCloneApp.swift in Sources */,
 				DFC014702C57B9B00081E0B6 /* MainTabView.swift in Sources */,
 			);
