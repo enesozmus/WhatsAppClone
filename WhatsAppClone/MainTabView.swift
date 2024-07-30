@@ -24,7 +24,8 @@ struct MainTabView: View {
                     Text(Tab.updates.title)
                 }
             
-            placeholderItemView("Calls")
+            //placeholderItemView("Calls")
+            CallsTabScreenView()
                 .tabItem {
                     Image(systemName: Tab.calls.icon)
                     Text(Tab.calls.title)

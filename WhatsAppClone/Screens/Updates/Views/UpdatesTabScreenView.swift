@@ -72,7 +72,8 @@ extension UpdatesTabScreenView {
     }
 }
 
-// MARK: Other Views
+
+// MARK: Components
 private struct StatusSectionHeader: View {
     var body: some View {
         HStack(alignment: .top) {
@@ -153,7 +154,6 @@ private struct RecentUpdatesItemView: View {
             Circle()
                 .frame(width: UpdatesTabScreenView.Constant.imageDimen, height: UpdatesTabScreenView.Constant.imageDimen)
                 .foregroundStyle(.red)
-            
             
             VStack(alignment: .leading) {
                 Text("Joseph Smith")
