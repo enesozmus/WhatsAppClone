@@ -16,6 +16,9 @@
 		DFC014682C57B9620081E0B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC014672C57B9620081E0B6 /* Preview Assets.xcassets */; };
 		DFC014702C57B9B00081E0B6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC0146F2C57B9B00081E0B6 /* MainTabView.swift */; };
 		DFC014732C57C0A20081E0B6 /* UpdatesTabScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC014722C57C0A20081E0B6 /* UpdatesTabScreenView.swift */; };
+		DFC694CD2C590D8700887AC6 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694CC2C590D8700887AC6 /* SettingsItem.swift */; };
+		DFC694CF2C590DC400887AC6 /* SettingsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694CE2C590DC400887AC6 /* SettingsItemView.swift */; };
+		DFC694D12C590EED00887AC6 /* SettingsTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D02C590EED00887AC6 /* SettingsTabScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		DFC0146F2C57B9B00081E0B6 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		DFC014712C57BE920081E0B6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DFC014722C57C0A20081E0B6 /* UpdatesTabScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTabScreenView.swift; sourceTree = "<group>"; };
+		DFC694CC2C590D8700887AC6 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
+		DFC694CE2C590DC400887AC6 /* SettingsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItemView.swift; sourceTree = "<group>"; };
+		DFC694D02C590EED00887AC6 /* SettingsTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +55,7 @@
 				DF0D062C2C58F60D00FA8660 /* Calls */,
 				DF0D06342C58FC2300FA8660 /* Channel */,
 				DF0D06302C58F90300FA8660 /* Community */,
+				DFC694C92C590D5400887AC6 /* Settings */,
 				DF0D062E2C58F65200FA8660 /* Updates */,
 			);
 			path = Screens;
@@ -113,8 +120,8 @@
 		DF0D06352C58FC2D00FA8660 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DF0D06362C58FC6300FA8660 /* ChannelTabScreenView.swift */,
 				DF0D06382C58FE2100FA8660 /* ChannelItemView.swift */,
+				DF0D06362C58FC6300FA8660 /* ChannelTabScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,6 +169,32 @@
 				DFC014642C57B9620081E0B6 /* Assets.xcassets */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		DFC694C92C590D5400887AC6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DFC694CB2C590D6500887AC6 /* Models */,
+				DFC694CA2C590D5E00887AC6 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DFC694CA2C590D5E00887AC6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DFC694CE2C590DC400887AC6 /* SettingsItemView.swift */,
+				DFC694D02C590EED00887AC6 /* SettingsTabScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DFC694CB2C590D6500887AC6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DFC694CC2C590D8700887AC6 /* SettingsItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +271,10 @@
 				DFC014732C57C0A20081E0B6 /* UpdatesTabScreenView.swift in Sources */,
 				DF0D06332C58F91C00FA8660 /* CommunityTabScreenView.swift in Sources */,
 				DF0D062A2C58EA1E00FA8660 /* CallsTabScreenView.swift in Sources */,
+				DFC694D12C590EED00887AC6 /* SettingsTabScreen.swift in Sources */,
 				DFC014612C57B9610081E0B6 /* WhatsAppCloneApp.swift in Sources */,
+				DFC694CD2C590D8700887AC6 /* SettingsItem.swift in Sources */,
+				DFC694CF2C590DC400887AC6 /* SettingsItemView.swift in Sources */,
 				DF0D06392C58FE2100FA8660 /* ChannelItemView.swift in Sources */,
 				DFC014702C57B9B00081E0B6 /* MainTabView.swift in Sources */,
 			);
