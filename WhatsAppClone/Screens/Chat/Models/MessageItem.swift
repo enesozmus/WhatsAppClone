@@ -31,12 +31,13 @@ struct MessageItem: Identifiable {
     static let stubMessages: [MessageItem] = [
         MessageItem(text: "Hi There", type: .text, direction: .sent),
         MessageItem(text: "Check out this Photo", type: .photo, direction: .received),
-        MessageItem(text: "Play out this Video", type: .video, direction: .sent)
+        MessageItem(text: "Play out this Video", type: .video, direction: .sent),
+        MessageItem(text: "", type: .audio, direction: .received)
     ]
 }
 
 enum MessageType {
-    case text, photo, video
+    case text, photo, video, audio
 }
 
 enum MessageDirection {

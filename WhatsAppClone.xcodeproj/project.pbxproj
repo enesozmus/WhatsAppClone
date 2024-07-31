@@ -22,6 +22,7 @@
 		DFC694D12C590EED00887AC6 /* SettingsTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D02C590EED00887AC6 /* SettingsTabScreen.swift */; };
 		DFC694D52C59186900887AC6 /* TextInputArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D42C59186900887AC6 /* TextInputArea.swift */; };
 		DFC694D72C591A6400887AC6 /* ChatRoomScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D62C591A6400887AC6 /* ChatRoomScreenView.swift */; };
+		DFD316122C5AAC3A00D78CD8 /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD316112C5AAC3A00D78CD8 /* BubbleAudioView.swift */; };
 		DFF964F82C5A42ED00B69C6B /* MessageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF964F72C5A42ED00B69C6B /* MessageListController.swift */; };
 		DFF964FC2C5A47AD00B69C6B /* MessageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF964FB2C5A47AD00B69C6B /* MessageListView.swift */; };
 		DFF964FF2C5A498B00B69C6B /* MessageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF964FE2C5A498B00B69C6B /* MessageItem.swift */; };
@@ -48,6 +49,7 @@
 		DFC694D02C590EED00887AC6 /* SettingsTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabScreen.swift; sourceTree = "<group>"; };
 		DFC694D42C59186900887AC6 /* TextInputArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputArea.swift; sourceTree = "<group>"; };
 		DFC694D62C591A6400887AC6 /* ChatRoomScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomScreenView.swift; sourceTree = "<group>"; };
+		DFD316112C5AAC3A00D78CD8 /* BubbleAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAudioView.swift; sourceTree = "<group>"; };
 		DFF964F72C5A42ED00B69C6B /* MessageListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListController.swift; sourceTree = "<group>"; };
 		DFF964FB2C5A47AD00B69C6B /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
 		DFF964FE2C5A498B00B69C6B /* MessageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageItem.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		DFC694D32C59184B00887AC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DFD316112C5AAC3A00D78CD8 /* BubbleAudioView.swift */,
 				DF3872D52C5A647800B9D65E /* BubbleImageView.swift */,
 				DFF965052C5A4C5900B69C6B /* BubbleTailView.swift */,
 				DFF965002C5A4A7300B69C6B /* BubbleTextView.swift */,
@@ -343,6 +346,7 @@
 				DFF965012C5A4A7300B69C6B /* BubbleTextView.swift in Sources */,
 				DFF964FF2C5A498B00B69C6B /* MessageItem.swift in Sources */,
 				DFC694CF2C590DC400887AC6 /* SettingsItemView.swift in Sources */,
+				DFD316122C5AAC3A00D78CD8 /* BubbleAudioView.swift in Sources */,
 				DF0D06392C58FE2100FA8660 /* ChannelItemView.swift in Sources */,
 				DFC014702C57B9B00081E0B6 /* MainTabView.swift in Sources */,
 			);
