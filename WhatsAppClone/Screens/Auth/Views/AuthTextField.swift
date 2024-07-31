@@ -26,6 +26,7 @@ struct AuthTextField: View {
                 SecureField(type.placeholder, text: $text)
             default:
                 TextField(type.placeholder, text: $text)
+                    .keyboardType(type.keyboardType)
             }
         }
         .foregroundStyle(.white)
@@ -86,7 +87,6 @@ extension AuthTextField {
             AuthTextField(type: .email, text: .constant(""))
             AuthTextField(type: .password, text: .constant(""))
             AuthTextField(type: .custom("BirthDay", "birthday.cake"), text: .constant(""))
-            
         }
     }
 }

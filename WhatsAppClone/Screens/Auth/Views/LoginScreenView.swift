@@ -10,25 +10,32 @@ import SwiftUI
 
 // MARK: View
 struct LoginScreenView: View {
+    
+    // MARK: Properties
+    @StateObject private var authScreenModel = AuthScreenModel()
+    
     var body: some View {
         NavigationStack {
             VStack {
                 Spacer()
+                
                 AuthHeader()
                 
-                AuthTextField(type: .email, text: .constant(""))
-                AuthTextField(type: .password, text: .constant(""))
+                AuthTextField(type: .email, text: $authScreenModel.email)
+                AuthTextField(type: .password, text: $authScreenModel.password)
                 
                 forgotPasswordButton()
                 
                 AuthButton(title: "Log in now") {
-                    //...
+                    //
                 }
+                .disabled(authScreenModel.disableLoginButton)
                 
                 Spacer()
                 
                 signUpButton()
                     .padding(.bottom, 30)
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.teal.gradient)
@@ -53,7 +60,7 @@ struct LoginScreenView: View {
     
     private func signUpButton() -> some View {
         NavigationLink {
-            Text("SIGN UP View PLACEHOLDER")
+            SignUpScreenView(authScreenModel: authScreenModel)
         } label: {
             HStack {
                 Image(systemName: "sparkles")

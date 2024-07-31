@@ -40,7 +40,6 @@ struct AuthButton: View {
             .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
             .shadow(color: .green.opacity(0.2), radius: 10)
             .padding(.horizontal, 32)
-            
         }
     }
 }
