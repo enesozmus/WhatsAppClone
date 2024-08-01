@@ -37,9 +37,15 @@ struct LoginScreenView: View {
                     .padding(.bottom, 30)
                 
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(maxWidth: .infinity)
             .background(.teal.gradient)
             .ignoresSafeArea()
+            .alert(isPresented: $authScreenModel.errorState.showError) {
+                Alert(
+                    title: Text(authScreenModel.errorState.errorMessage),
+                    dismissButton: .default(Text("Ok"))
+                )
+            }
         }
     }
     
