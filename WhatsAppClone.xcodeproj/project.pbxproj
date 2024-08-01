@@ -28,6 +28,7 @@
 		DFC694D12C590EED00887AC6 /* SettingsTabScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D02C590EED00887AC6 /* SettingsTabScreen.swift */; };
 		DFC694D52C59186900887AC6 /* TextInputArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D42C59186900887AC6 /* TextInputArea.swift */; };
 		DFC694D72C591A6400887AC6 /* ChatRoomScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D62C591A6400887AC6 /* ChatRoomScreenView.swift */; };
+		DFCF79672C5ADAA60043A737 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF79662C5ADAA60043A737 /* AuthProvider.swift */; };
 		DFD316122C5AAC3A00D78CD8 /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD316112C5AAC3A00D78CD8 /* BubbleAudioView.swift */; };
 		DFD316152C5AB6EC00D78CD8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DFD316142C5AB6EC00D78CD8 /* FirebaseAuth */; };
 		DFD316172C5AB6EC00D78CD8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = DFD316162C5AB6EC00D78CD8 /* FirebaseDatabase */; };
@@ -66,6 +67,7 @@
 		DFC694D02C590EED00887AC6 /* SettingsTabScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTabScreen.swift; sourceTree = "<group>"; };
 		DFC694D42C59186900887AC6 /* TextInputArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputArea.swift; sourceTree = "<group>"; };
 		DFC694D62C591A6400887AC6 /* ChatRoomScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomScreenView.swift; sourceTree = "<group>"; };
+		DFCF79662C5ADAA60043A737 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		DFD316112C5AAC3A00D78CD8 /* BubbleAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAudioView.swift; sourceTree = "<group>"; };
 		DFD3161C2C5ABA9600D78CD8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DFF964F72C5A42ED00B69C6B /* MessageListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListController.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		DF9045E82C5AC7220034450C /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				DFCF79652C5ADA960043A737 /* Services */,
 				DF9045EF2C5AC9050034450C /* ViewModels */,
 				DF9045E72C5AC7220034450C /* Views */,
 			);
@@ -296,6 +299,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		DFCF79652C5ADA960043A737 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DFCF79662C5ADAA60043A737 /* AuthProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		DFF964FD2C5A497700B69C6B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +409,7 @@
 				DFC014732C57C0A20081E0B6 /* UpdatesTabScreenView.swift in Sources */,
 				DFF965062C5A4C5900B69C6B /* BubbleTailView.swift in Sources */,
 				DF9045EC2C5AC7220034450C /* LoginScreenView.swift in Sources */,
+				DFCF79672C5ADAA60043A737 /* AuthProvider.swift in Sources */,
 				DF0D06332C58F91C00FA8660 /* CommunityTabScreenView.swift in Sources */,
 				DF0D062A2C58EA1E00FA8660 /* CallsTabScreenView.swift in Sources */,
 				DFF964F82C5A42ED00B69C6B /* MessageListController.swift in Sources */,

@@ -29,7 +29,9 @@ struct SignUpScreenView: View {
             AuthTextField(type: .password, text: $authScreenModel.password)
             
             AuthButton(title: "Create an Account") {
-                //
+                Task {
+                    await authScreenModel.handleSignUp()
+                }
             }
             .disabled(authScreenModel.disableSignUpButton)
             
@@ -38,7 +40,7 @@ struct SignUpScreenView: View {
             backButton()
                 .padding(.bottom, 30)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .background {
             LinearGradient(colors: [.green, .green.opacity(0.8), .teal], startPoint: .top, endPoint: .bottom)
         }
