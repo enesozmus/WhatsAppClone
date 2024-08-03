@@ -44,18 +44,24 @@ struct SettingsTabScreen: View {
             }
         }
     }
-    
+}
+
+
+// MARK: Extension
+extension SettingsTabScreen {
     @ToolbarContentBuilder
     private func leadingNavItem() -> some ToolbarContent {
-        ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                
-            } label: {
-                Text("Save")
+        ToolbarItem(placement: .topBarLeading) {
+            Button("Sign Out") {
+                Task {
+                    try? await AuthManager.shared.logOut()
+                }
             }
+            .foregroundStyle(.red)
         }
     }
 }
+
 
 // MARK: Components
 private struct SettingsHeaderView: View {

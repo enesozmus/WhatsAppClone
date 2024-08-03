@@ -11,14 +11,12 @@ import SwiftUI
 // MARK: View
 struct LoginScreenView: View {
     
-    // MARK: Properties
     @StateObject private var authScreenModel = AuthScreenModel()
     
     var body: some View {
         NavigationStack {
             VStack {
                 Spacer()
-                
                 AuthHeader()
                 
                 AuthTextField(type: .email, text: $authScreenModel.email)
@@ -27,7 +25,7 @@ struct LoginScreenView: View {
                 forgotPasswordButton()
                 
                 AuthButton(title: "Log in now") {
-                    //
+                    Task { await authScreenModel.handleLogin() }
                 }
                 .disabled(authScreenModel.disableLoginButton)
                 
@@ -37,7 +35,7 @@ struct LoginScreenView: View {
                     .padding(.bottom, 30)
                 
             }
-            .frame(maxWidth: .infinity)
+            //.frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.teal.gradient)
             .ignoresSafeArea()
             .alert(isPresented: $authScreenModel.errorState.showError) {
@@ -49,7 +47,6 @@ struct LoginScreenView: View {
         }
     }
     
-    // MARK: Func... Comp.
     private func forgotPasswordButton() -> some View {
         Button {
             
@@ -60,7 +57,6 @@ struct LoginScreenView: View {
                 .padding(.trailing, 32)
                 .bold()
                 .padding(.vertical)
-            
         }
     }
     
@@ -72,9 +68,11 @@ struct LoginScreenView: View {
                 Image(systemName: "sparkles")
                 
                 (
+                    
                     Text("Don't have an account ? ")
                     +
                     Text("Create one").bold()
+                    
                 )
                 Image(systemName: "sparkles")
             }

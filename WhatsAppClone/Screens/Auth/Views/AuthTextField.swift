@@ -38,7 +38,7 @@ struct AuthTextField: View {
 }
 
 
-// MARK: Preview
+// MARK: Extension
 extension AuthTextField {
     enum InputType {
         case email
