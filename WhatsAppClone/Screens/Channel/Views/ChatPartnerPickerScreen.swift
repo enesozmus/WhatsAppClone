@@ -15,6 +15,7 @@ struct ChatPartnerPickerScreen: View {
     @State private var searchText: String = ""
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = ChatPartnerPickerViewModel()
+    var onCreate: (_ newChannel: ChannelItem) -> Void
     
     var body: some View {
         NavigationStack(path: $viewModel.navStack) {
@@ -29,6 +30,17 @@ struct ChatPartnerPickerScreen: View {
                 Section {
                     ForEach(viewModel.users) { user in
                         ChatPartnerRowView(user: user)
+                            .onTapGesture {
+                                viewModel.selectedChatPartners.append(user)
+                                let createChannel = viewModel.createChannel(nil)
+                                switch createChannel {
+                                case .success(let channelItem):
+                                    onCreate(channelItem)
+                                    
+                                case .failure(let error):
+                                    print("failed to create channel: \(error.localizedDescription)")
+                                }
+                            }
                     }
                 } header: {
                     Text("Contacts on WhatsApp")
@@ -163,5 +175,6 @@ enum ChatPartnerPickerOption: String, CaseIterable, Identifiable {
 
 // MARK: Preview
 #Preview {
-    ChatPartnerPickerScreen()
+    ChatPartnerPickerScreen { channel in
+    }
 }

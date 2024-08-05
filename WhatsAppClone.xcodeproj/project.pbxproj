@@ -52,6 +52,9 @@
 		DFF965012C5A4A7300B69C6B /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF965002C5A4A7300B69C6B /* BubbleTextView.swift */; };
 		DFF965042C5A4BA900B69C6B /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF965032C5A4BA900B69C6B /* CustomModifiers.swift */; };
 		DFF965062C5A4C5900B69C6B /* BubbleTailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF965052C5A4C5900B69C6B /* BubbleTailView.swift */; };
+		DFFC4F502C60F98300EF66D8 /* ChannelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F4F2C60F98300EF66D8 /* ChannelItem.swift */; };
+		DFFC4F522C60FA8500EF66D8 /* ChannelTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F512C60FA8500EF66D8 /* ChannelTabViewModel.swift */; };
+		DFFC4F552C60FF9C00EF66D8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +101,9 @@
 		DFF965002C5A4A7300B69C6B /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
 		DFF965032C5A4BA900B69C6B /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		DFF965052C5A4C5900B69C6B /* BubbleTailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTailView.swift; sourceTree = "<group>"; };
+		DFFC4F4F2C60F98300EF66D8 /* ChannelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelItem.swift; sourceTree = "<group>"; };
+		DFFC4F512C60FA8500EF66D8 /* ChannelTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTabViewModel.swift; sourceTree = "<group>"; };
+		DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +187,7 @@
 		DF0D06342C58FC2300FA8660 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				DFFC4F4E2C60F96200EF66D8 /* Models */,
 				DF705EAE2C5E20B7000C0313 /* ViewModels */,
 				DF0D06352C58FC2D00FA8660 /* Views */,
 			);
@@ -245,6 +252,7 @@
 		DF705EAE2C5E20B7000C0313 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				DFFC4F512C60FA8500EF66D8 /* ChannelTabViewModel.swift */,
 				DF705EAF2C5E20C2000C0313 /* ChatPartnerPickerViewModel.swift */,
 			);
 			path = ViewModels;
@@ -310,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				DFC0146E2C57B9830081E0B6 /* App */,
+				DFFC4F532C60FF8800EF66D8 /* Extensions */,
 				DF096C692C5CCF160039A642 /* GoogleService-Info.plist */,
 				DFF965022C5A4B8F00B69C6B /* Helpers */,
 				DFC0146F2C57B9B00081E0B6 /* MainTabView.swift */,
@@ -412,6 +421,22 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		DFFC4F4E2C60F96200EF66D8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DFFC4F4F2C60F98300EF66D8 /* ChannelItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DFFC4F532C60FF8800EF66D8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -500,14 +525,17 @@
 				DFC014732C57C0A20081E0B6 /* UpdatesTabScreenView.swift in Sources */,
 				DFF965062C5A4C5900B69C6B /* BubbleTailView.swift in Sources */,
 				DF52420B2C5C0D350029EE1C /* UserItem.swift in Sources */,
+				DFFC4F522C60FA8500EF66D8 /* ChannelTabViewModel.swift in Sources */,
 				DF9045EC2C5AC7220034450C /* LoginScreenView.swift in Sources */,
 				DF705EB22C5E364C000C0313 /* SelectedChatPartnerView.swift in Sources */,
 				DFCF79672C5ADAA60043A737 /* AuthProvider.swift in Sources */,
 				DF5242082C5C0CED0029EE1C /* FirebaseConstants.swift in Sources */,
 				DF0D06332C58F91C00FA8660 /* CommunityTabScreenView.swift in Sources */,
+				DFFC4F552C60FF9C00EF66D8 /* String+Extensions.swift in Sources */,
 				DF0D062A2C58EA1E00FA8660 /* CallsTabScreenView.swift in Sources */,
 				DFF964F82C5A42ED00B69C6B /* MessageListController.swift in Sources */,
 				DF705EB02C5E20C2000C0313 /* ChatPartnerPickerViewModel.swift in Sources */,
+				DFFC4F502C60F98300EF66D8 /* ChannelItem.swift in Sources */,
 				DFC694D12C590EED00887AC6 /* SettingsTabScreen.swift in Sources */,
 				DFF965042C5A4BA900B69C6B /* CustomModifiers.swift in Sources */,
 				DFC014612C57B9610081E0B6 /* WhatsAppCloneApp.swift in Sources */,

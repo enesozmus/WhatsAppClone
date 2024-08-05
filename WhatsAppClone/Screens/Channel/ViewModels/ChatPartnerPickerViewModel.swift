@@ -18,6 +18,10 @@ enum ChannelContants {
     static let maxGroupParticipants = 12
 }
 
+enum ChannelCreationError: Error {
+    case noChatPartner
+    case failedToCreateUniqueIds
+}
 
 @MainActor
 final class ChatPartnerPickerViewModel: ObservableObject {
@@ -42,6 +46,9 @@ final class ChatPartnerPickerViewModel: ObservableObject {
         return !users.isEmpty
     }
     
+    private var isDirectChannel: Bool {
+        return selectedChatPartners.count == 1
+    }
     
     // MARK: Init
     init() {
@@ -89,5 +96,52 @@ final class ChatPartnerPickerViewModel: ObservableObject {
     private func showError(_ errorMessage: String) {
         errorState.errorMessage = errorMessage
         errorState.showError = true
+    }
+    
+    func createChannel(_ channelName: String?) -> Result<ChannelItem, Error> {
+        guard !selectedChatPartners.isEmpty else { return .failure(ChannelCreationError.noChatPartner) }
+        
+        guard
+            let channelId = FirebaseConstants.ChannelsRef.childByAutoId().key,
+            let currentUid = Auth.auth().currentUser?.uid
+            //let messageId = FirebaseConstants.MessagesRef.childByAutoId().key
+        else { return .failure(ChannelCreationError.failedToCreateUniqueIds) }
+        
+        let timeStamp = Date().timeIntervalSince1970
+        var membersUids = selectedChatPartners.compactMap { $0.uid }
+        membersUids.append(currentUid)
+        
+        var channelDict: [String: Any] = [
+            .id: channelId,
+            .lastMessage: "",
+            .creationDate: timeStamp,
+            .lastMessageTimeStamp: timeStamp,
+            .membersUids: membersUids,
+            .membersCount: membersUids.count,
+            .adminUids: [currentUid]
+        ]
+        
+        if let channelName = channelName, !channelName.isEmptyOrWhiteSpace {
+            channelDict[.name] = channelName
+        }
+        
+        FirebaseConstants.ChannelsRef.child(channelId).setValue(channelDict)
+        
+        membersUids.forEach { userId in
+            /// keeping an index of the channel that a specific user belongs to
+            FirebaseConstants.UserChannelsRef.child(userId).child(channelId).setValue(true)
+        }
+        
+        /// Makes sure that a direct channel is unique
+        if isDirectChannel {
+            let chatPartner = selectedChatPartners[0]
+            FirebaseConstants.UserDirectChannels.child(currentUid).child(chatPartner.uid).setValue([channelId: true])
+            FirebaseConstants.UserDirectChannels.child(chatPartner.uid).child(currentUid).setValue([channelId: true])
+        }
+        
+        var newChannelItem = ChannelItem(channelDict)
+        newChannelItem.members = selectedChatPartners
+        return .success(newChannelItem)
+        
     }
 }
