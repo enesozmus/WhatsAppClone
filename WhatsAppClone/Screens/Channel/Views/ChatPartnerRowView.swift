@@ -9,10 +9,17 @@ import SwiftUI
 
 
 // MARK: View
-struct ChatPartnerRowView: View {
+struct ChatPartnerRowView<Content: View>: View {
     
     // MARK: Properties
-    let user: UserItem
+    private let user: UserItem
+    private let trailingItems: Content
+    
+    // MARK: Init
+    init(user: UserItem, @ViewBuilder trailingItems: () -> Content = { EmptyView() }) {
+        self.user = user
+        self.trailingItems = trailingItems()
+    }
     
     var body: some View {
         HStack {
@@ -29,6 +36,8 @@ struct ChatPartnerRowView: View {
                     .font(.caption)
                     .foregroundStyle(.gray)
             }
+            
+            trailingItems
         }
     }
 }
