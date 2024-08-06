@@ -31,15 +31,7 @@ struct ChatPartnerPickerScreen: View {
                     ForEach(viewModel.users) { user in
                         ChatPartnerRowView(user: user)
                             .onTapGesture {
-                                viewModel.selectedChatPartners.append(user)
-                                let createChannel = viewModel.createChannel(nil)
-                                switch createChannel {
-                                case .success(let channelItem):
-                                    onCreate(channelItem)
-                                    
-                                case .failure(let error):
-                                    print("failed to create channel: \(error.localizedDescription)")
-                                }
+                                viewModel.createDirectChannel(user, completion: onCreate)
                             }
                     }
                 } header: {
@@ -71,6 +63,9 @@ struct ChatPartnerPickerScreen: View {
             }
             .toolbar {
                 trailingNavItem()
+            }
+            .onAppear {
+                viewModel.deSelectAllChatPartners()
             }
         }
     }
@@ -131,7 +126,7 @@ extension ChatPartnerPickerScreen {
         case .groupPartnerPicker:
             GroupPartnerPickerScreen(viewModel: viewModel)
         case .setUpGroupChat:
-            NewGroupSetUpScreen(viewModel: viewModel)
+            NewGroupSetUpScreen(viewModel: viewModel, onCreate: onCreate)
         }
     }
     

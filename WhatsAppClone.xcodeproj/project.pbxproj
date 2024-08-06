@@ -55,6 +55,7 @@
 		DFFC4F502C60F98300EF66D8 /* ChannelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F4F2C60F98300EF66D8 /* ChannelItem.swift */; };
 		DFFC4F522C60FA8500EF66D8 /* ChannelTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F512C60FA8500EF66D8 /* ChannelTabViewModel.swift */; };
 		DFFC4F552C60FF9C00EF66D8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */; };
+		DFFC4F572C61276D00EF66D8 /* MessageItems+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F562C61276D00EF66D8 /* MessageItems+Types.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		DFFC4F4F2C60F98300EF66D8 /* ChannelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelItem.swift; sourceTree = "<group>"; };
 		DFFC4F512C60FA8500EF66D8 /* ChannelTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTabViewModel.swift; sourceTree = "<group>"; };
 		DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		DFFC4F562C61276D00EF66D8 /* MessageItems+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageItems+Types.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				DFF964FE2C5A498B00B69C6B /* MessageItem.swift */,
+				DFFC4F562C61276D00EF66D8 /* MessageItems+Types.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				DFC694CD2C590D8700887AC6 /* SettingsItem.swift in Sources */,
 				DF9045EE2C5AC8B40034450C /* SignUpScreenView.swift in Sources */,
 				DFF964FC2C5A47AD00B69C6B /* MessageListView.swift in Sources */,
+				DFFC4F572C61276D00EF66D8 /* MessageItems+Types.swift in Sources */,
 				DFC694D72C591A6400887AC6 /* ChatRoomScreenView.swift in Sources */,
 				DF705EAB2C5E1A98000C0313 /* ChatPartnerRowView.swift in Sources */,
 				DFC694D52C59186900887AC6 /* TextInputArea.swift in Sources */,
