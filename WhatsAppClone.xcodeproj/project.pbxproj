@@ -41,6 +41,8 @@
 		DFC694D52C59186900887AC6 /* TextInputArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D42C59186900887AC6 /* TextInputArea.swift */; };
 		DFC694D72C591A6400887AC6 /* ChatRoomScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC694D62C591A6400887AC6 /* ChatRoomScreenView.swift */; };
 		DFCF79672C5ADAA60043A737 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCF79662C5ADAA60043A737 /* AuthProvider.swift */; };
+		DFD2A21F2C6379C4004777C8 /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD2A21E2C6379C3004777C8 /* MessageService.swift */; };
+		DFD2A2222C638AF7004777C8 /* ChatRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD2A2212C638AF7004777C8 /* ChatRoomViewModel.swift */; };
 		DFD316122C5AAC3A00D78CD8 /* BubbleAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD316112C5AAC3A00D78CD8 /* BubbleAudioView.swift */; };
 		DFD316152C5AB6EC00D78CD8 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DFD316142C5AB6EC00D78CD8 /* FirebaseAuth */; };
 		DFD316172C5AB6EC00D78CD8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = DFD316162C5AB6EC00D78CD8 /* FirebaseDatabase */; };
@@ -95,6 +97,8 @@
 		DFC694D42C59186900887AC6 /* TextInputArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputArea.swift; sourceTree = "<group>"; };
 		DFC694D62C591A6400887AC6 /* ChatRoomScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomScreenView.swift; sourceTree = "<group>"; };
 		DFCF79662C5ADAA60043A737 /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		DFD2A21E2C6379C3004777C8 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		DFD2A2212C638AF7004777C8 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		DFD316112C5AAC3A00D78CD8 /* BubbleAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAudioView.swift; sourceTree = "<group>"; };
 		DFF964F72C5A42ED00B69C6B /* MessageListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListController.swift; sourceTree = "<group>"; };
 		DFF964FB2C5A47AD00B69C6B /* MessageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListView.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				DF705EB62C5E4E56000C0313 /* UserService.swift */,
+				DFD2A21E2C6379C3004777C8 /* MessageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				DFF964F72C5A42ED00B69C6B /* MessageListController.swift */,
 				DFF964FB2C5A47AD00B69C6B /* MessageListView.swift */,
 				DFF964FD2C5A497700B69C6B /* Models */,
+				DFD2A2202C638ADE004777C8 /* ViewModels */,
 				DFC694D32C59184B00887AC6 /* Views */,
 			);
 			path = Chat;
@@ -405,6 +411,14 @@
 				DFCF79662C5ADAA60043A737 /* AuthProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		DFD2A2202C638ADE004777C8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFD2A2212C638AF7004777C8 /* ChatRoomViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DFF964FD2C5A497700B69C6B /* Models */ = {
@@ -525,6 +539,7 @@
 				DF0D06372C58FC6300FA8660 /* ChannelTabScreenView.swift in Sources */,
 				DF9045F12C5AC9100034450C /* AuthScreenModel.swift in Sources */,
 				DF9045E92C5AC7220034450C /* AuthButton.swift in Sources */,
+				DFD2A21F2C6379C4004777C8 /* MessageService.swift in Sources */,
 				DFC014732C57C0A20081E0B6 /* UpdatesTabScreenView.swift in Sources */,
 				DFF965062C5A4C5900B69C6B /* BubbleTailView.swift in Sources */,
 				DF52420B2C5C0D350029EE1C /* UserItem.swift in Sources */,
@@ -534,6 +549,7 @@
 				DFCF79672C5ADAA60043A737 /* AuthProvider.swift in Sources */,
 				DF5242082C5C0CED0029EE1C /* FirebaseConstants.swift in Sources */,
 				DF0D06332C58F91C00FA8660 /* CommunityTabScreenView.swift in Sources */,
+				DFD2A2222C638AF7004777C8 /* ChatRoomViewModel.swift in Sources */,
 				DFFC4F552C60FF9C00EF66D8 /* String+Extensions.swift in Sources */,
 				DF0D062A2C58EA1E00FA8660 /* CallsTabScreenView.swift in Sources */,
 				DFF964F82C5A42ED00B69C6B /* MessageListController.swift in Sources */,

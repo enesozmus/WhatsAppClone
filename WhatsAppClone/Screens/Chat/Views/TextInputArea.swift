@@ -11,7 +11,13 @@ import SwiftUI
 // MARK: View
 struct TextInputArea: View {
     
-    @State private var text: String = ""
+    // MARK: Properties
+    @Binding var textMessage: String
+    let onSendHandler:() -> Void
+    
+    private var disableSendButton: Bool {
+        return textMessage.isEmptyOrWhiteSpace
+    }
     
     var body: some View {
         HStack(alignment: .bottom, spacing: 5) {
@@ -21,15 +27,35 @@ struct TextInputArea: View {
             audioRecorderButton()
             messageTextField()
             sendMessageButton()
+                .disabled(disableSendButton)
+                .grayscale(disableSendButton ? 0.8 : 0)
         }
         .padding(.bottom)
         .padding(.horizontal, 8)
         .padding(.top, 10)
         .background(.whatsAppWhite)
     }
+}
+
+
+// MARK: Extension
+extension TextInputArea {
+    private func messageTextField() -> some View {
+        TextField("", text: $textMessage, axis: .vertical)
+            .padding(5)
+            .background(
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .fill(.thinMaterial)
+            )
+            .overlay(textViewBorder())
+    }
+    
+    private func textViewBorder() -> some View {
+        RoundedRectangle(cornerRadius: 20, style: .continuous)
+            .stroke(Color(.systemGray5), lineWidth: 1)
+    }
     
     
-    // MARK: Func... components
     private func imagePickerButton() -> some View {
         Button {
             
@@ -54,24 +80,9 @@ struct TextInputArea: View {
         }
     }
     
-    private func messageTextField() -> some View {
-        TextField("", text: $text, axis: .vertical)
-            .padding(5)
-            .background(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(.thinMaterial)
-            )
-            .overlay(textViewBorder())
-    }
-    
-    private func textViewBorder() -> some View {
-        RoundedRectangle(cornerRadius: 20, style: .continuous)
-            .stroke(Color(.systemGray5), lineWidth: 1)
-    }
-    
     private func sendMessageButton() -> some View {
         Button {
-            
+            onSendHandler()
         } label: {
             Image(systemName: "arrow.up")
                 .fontWeight(.heavy)
@@ -86,5 +97,7 @@ struct TextInputArea: View {
 
 // MARK: Preview
 #Preview {
-    TextInputArea()
+    TextInputArea(textMessage: .constant("")) {
+        
+    }
 }

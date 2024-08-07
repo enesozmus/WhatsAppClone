@@ -11,6 +11,13 @@ struct ChatRoomScreenView: View {
     
     // MARK: Properties
     let channel: ChannelItem
+    @StateObject private var viewModel: ChatRoomViewModel
+    
+    // MARK: Init
+    init(channel: ChannelItem) {
+        self.channel = channel
+        _viewModel = StateObject(wrappedValue: ChatRoomViewModel(channel))
+    }
     
     var body: some View {
         MessageListView()
@@ -21,7 +28,9 @@ struct ChatRoomScreenView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .safeAreaInset(edge: .bottom) {
-                TextInputArea()
+                TextInputArea(textMessage: $viewModel.textMessage) {
+                    viewModel.sendMessage()
+                }
             }
     }
 }

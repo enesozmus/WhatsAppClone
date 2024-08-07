@@ -43,7 +43,7 @@ struct ChannelItem: Identifiable {
     }
     
     private var groupMemberNames: String {
-        let membersCount = membersExcludingMe.count
+        let membersCount = membersCount - 1
         let fullNames: [String] = membersExcludingMe.map { $0.username }
         
         if membersCount == 2 {
@@ -68,7 +68,7 @@ struct ChannelItem: Identifiable {
         membersUids: [],
         members: [],
         createdBy: ""
-    )    
+    )
 }
 
 extension ChannelItem {

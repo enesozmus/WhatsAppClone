@@ -9,8 +9,23 @@ import Firebase
 import FirebaseDatabase
 import Foundation
 
-
 struct UserService {
+    static func getUsers(with uids: [String], completion: @escaping (UserNode) -> Void) {
+        var users: [UserItem] = []
+        for uid in uids {
+            let query = FirebaseConstants.UserRef.child(uid)
+            query.observeSingleEvent(of: .value) { snapshot in
+                guard let user = try? snapshot.data(as: UserItem.self) else { return }
+                users.append(user)
+                if users.count == uids.count {
+                    completion(UserNode(users: users))
+                }
+            } withCancel: { error in
+                completion(.emptyNode)
+            }
+        }
+    }
+    
     static func paginateUsers(lastCursor: String?, pageSize: UInt) async throws -> UserNode {
         let mainSnapshot: DataSnapshot
         if lastCursor == nil {
@@ -40,6 +55,7 @@ struct UserService {
         return .emptyNode
     }
 }
+
 
 struct UserNode {
     var users: [UserItem]
