@@ -58,6 +58,14 @@ struct ChannelItem: Identifiable {
         return "Unknown"
     }
     
+    var isCreatedByMe: Bool {
+        return createdBy == Auth.auth().currentUser?.uid ?? ""
+    }
+    
+    var creatorName: String {
+        return members.first { $0.uid == createdBy }?.username ?? "Someone"
+    }
+    
     static let placeholder = ChannelItem.init(
         id: "1",
         lastMessage: "Hello world",
@@ -71,6 +79,8 @@ struct ChannelItem: Identifiable {
     )
 }
 
+
+// MARK: Extension
 extension ChannelItem {
     init(_ dict: [String: Any]) {
         self.id = dict[.id] as? String ?? ""

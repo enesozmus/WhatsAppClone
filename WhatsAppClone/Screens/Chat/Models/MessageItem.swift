@@ -54,17 +54,20 @@ struct MessageItem: Identifiable {
     ]
 }
 
+
+// MARK: Extension
 extension MessageItem {
     init(id: String, dict: [String: Any]) {
         self.id = id
         self.text = dict[.text] as? String ?? ""
         let type = dict[.type] as? String ?? "text"
-        self.type = MessageType(type)
+        self.type = MessageType(type) ?? .text
         self.ownerUid = dict[.ownerUid] as? String ?? ""
         let timeInterval = dict[.timeStamp] as? TimeInterval ?? 0
         self.timeStamp = Date(timeIntervalSince1970: timeInterval)
     }
 }
+
 
 // MARK: String
 extension String {

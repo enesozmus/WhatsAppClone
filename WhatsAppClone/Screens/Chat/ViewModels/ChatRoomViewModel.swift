@@ -13,7 +13,8 @@ final class ChatRoomViewModel: ObservableObject {
     // MARK: Properties
     @Published var textMessage: String = ""
     @Published var messages = [MessageItem]()
-    private let channel: ChannelItem
+    
+    private(set) var channel: ChannelItem
     private var subscriptions = Set<AnyCancellable>()
     private var currentUser: UserItem?
     

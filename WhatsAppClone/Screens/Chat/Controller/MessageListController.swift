@@ -104,6 +104,18 @@ extension MessageListController: UITableViewDelegate, UITableViewDataSource {
                 BubbleImage(item: message)
             case .audio:
                 BubbleAudio(item: message)
+            case .admin(let adminType):
+                switch adminType {
+                case .channelCreation:
+                    ChannelCreationText()
+                    
+                    if viewModel.channel.isGroupChat {
+                        AdminMessageText(channel: viewModel.channel)
+                    }
+                    
+                default:
+                    Text("UNKNOW")
+                }
             }
         }
         return cell

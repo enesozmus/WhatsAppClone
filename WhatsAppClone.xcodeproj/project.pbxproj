@@ -24,6 +24,8 @@
 		DF705EB22C5E364C000C0313 /* SelectedChatPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF705EB12C5E364C000C0313 /* SelectedChatPartnerView.swift */; };
 		DF705EB42C5E36B5000C0313 /* NewGroupSetUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF705EB32C5E36B5000C0313 /* NewGroupSetUpScreen.swift */; };
 		DF705EB72C5E4E56000C0313 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF705EB62C5E4E56000C0313 /* UserService.swift */; };
+		DF8515CD2C661F0200B2E68D /* ChannelCreationText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */; };
+		DF8515CF2C661F5400B2E68D /* AdminMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8515CE2C661F5400B2E68D /* AdminMessageText.swift */; };
 		DF9045E92C5AC7220034450C /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045E32C5AC7220034450C /* AuthButton.swift */; };
 		DF9045EA2C5AC7220034450C /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045E42C5AC7220034450C /* AuthHeader.swift */; };
 		DF9045EB2C5AC7220034450C /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045E52C5AC7220034450C /* AuthTextField.swift */; };
@@ -78,6 +80,8 @@
 		DF705EB12C5E364C000C0313 /* SelectedChatPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedChatPartnerView.swift; sourceTree = "<group>"; };
 		DF705EB32C5E36B5000C0313 /* NewGroupSetUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupSetUpScreen.swift; sourceTree = "<group>"; };
 		DF705EB62C5E4E56000C0313 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationText.swift; sourceTree = "<group>"; };
+		DF8515CE2C661F5400B2E68D /* AdminMessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageText.swift; sourceTree = "<group>"; };
 		DF9045E32C5AC7220034450C /* AuthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DF9045E42C5AC7220034450C /* AuthHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
 		DF9045E52C5AC7220034450C /* AuthTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -403,10 +407,12 @@
 		DFC694D32C59184B00887AC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DF8515CE2C661F5400B2E68D /* AdminMessageText.swift */,
 				DFD316112C5AAC3A00D78CD8 /* BubbleAudio.swift */,
 				DF3872D52C5A647800B9D65E /* BubbleImage.swift */,
 				DFF965052C5A4C5900B69C6B /* BubbleTail.swift */,
 				DFF965002C5A4A7300B69C6B /* BubbleText.swift */,
+				DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */,
 				DFC694D62C591A6400887AC6 /* ChatRoomScreen.swift */,
 				DFC694D42C59186900887AC6 /* TextInputArea.swift */,
 			);
@@ -555,6 +561,7 @@
 				DF9045EC2C5AC7220034450C /* LoginScreenView.swift in Sources */,
 				DF705EB22C5E364C000C0313 /* SelectedChatPartnerView.swift in Sources */,
 				DFCF79672C5ADAA60043A737 /* AuthProvider.swift in Sources */,
+				DF8515CD2C661F0200B2E68D /* ChannelCreationText.swift in Sources */,
 				DF5242082C5C0CED0029EE1C /* FirebaseConstants.swift in Sources */,
 				DF0D06332C58F91C00FA8660 /* CommunityTabScreenView.swift in Sources */,
 				DFD2A2222C638AF7004777C8 /* ChatRoomViewModel.swift in Sources */,
@@ -583,6 +590,7 @@
 				DF705EB72C5E4E56000C0313 /* UserService.swift in Sources */,
 				DFC694CF2C590DC400887AC6 /* SettingsItemView.swift in Sources */,
 				DF9045EA2C5AC7220034450C /* AuthHeader.swift in Sources */,
+				DF8515CF2C661F5400B2E68D /* AdminMessageText.swift in Sources */,
 				DFD316122C5AAC3A00D78CD8 /* BubbleAudio.swift in Sources */,
 				DF0D06392C58FE2100FA8660 /* ChannelItemView.swift in Sources */,
 				DFC014702C57B9B00081E0B6 /* MainTabView.swift in Sources */,
