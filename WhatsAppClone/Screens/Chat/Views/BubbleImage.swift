@@ -1,5 +1,5 @@
 //
-//  BubbleImageView.swift
+//  BubbleImage.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 31.07.2024.
@@ -9,7 +9,7 @@ import SwiftUI
 
 
 // MARK: View
-struct BubbleImageView: View {
+struct BubbleImage: View {
     
     // MARK: Properties
     let item: MessageItem
@@ -109,8 +109,8 @@ struct BubbleImageView: View {
 // MARK: Preview
 #Preview {
     ScrollView {
-        BubbleImageView(item: .receivedPlaceholder)
-        BubbleImageView(item: .sentPlaceholder)
+        BubbleImage(item: .receivedPlaceholder)
+        BubbleImage(item: .sentPlaceholder)
     }
     .frame(maxWidth: .infinity)
     .padding(.horizontal)

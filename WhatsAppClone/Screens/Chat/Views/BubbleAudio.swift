@@ -1,5 +1,5 @@
 //
-//  BubbleAudioView.swift
+//  BubbleAudio.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 31.07.2024.
@@ -9,7 +9,7 @@ import SwiftUI
 
 
 // MARK: View
-struct BubbleAudioView: View {
+struct BubbleAudio: View {
     
     // MARK: Properties
     let item: MessageItem
@@ -75,8 +75,8 @@ struct BubbleAudioView: View {
 // MARK: Preview
 #Preview {
     ScrollView {
-        BubbleAudioView(item: .receivedPlaceholder)
-        BubbleAudioView(item: .sentPlaceholder)
+        BubbleAudio(item: .receivedPlaceholder)
+        BubbleAudio(item: .sentPlaceholder)
         
     }
     .frame(maxWidth: .infinity)

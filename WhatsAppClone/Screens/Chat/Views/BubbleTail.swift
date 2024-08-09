@@ -1,5 +1,5 @@
 //
-//  BubbleTailView.swift
+//  BubbleTail.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 31.07.2024.
@@ -9,7 +9,7 @@ import SwiftUI
 
 
 // MARK: View
-struct BubbleTailView: View {
+struct BubbleTail: View {
     
     // MARK: Properties
     let direction: MessageDirection
@@ -31,8 +31,8 @@ struct BubbleTailView: View {
 // MARK: Preview
 #Preview {
     ScrollView {
-        BubbleTailView(direction: .sent)
-        BubbleTailView(direction: .received)
+        BubbleTail(direction: .sent)
+        BubbleTail(direction: .received)
     }
     .frame(maxWidth: .infinity)
     .background(.gray.opacity(0.1))

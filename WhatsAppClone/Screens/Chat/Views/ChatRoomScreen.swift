@@ -1,5 +1,5 @@
 //
-//  ChatRoomScreenView.swift
+//  ChatRoomScreen.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 30.07.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatRoomScreenView: View {
+struct ChatRoomScreen: View {
     
     // MARK: Properties
     let channel: ChannelItem
@@ -20,7 +20,7 @@ struct ChatRoomScreenView: View {
     }
     
     var body: some View {
-        MessageListView()
+        MessageList(viewModel)
             .toolbar(.hidden, for: .tabBar)
             .toolbar {
                 leadingNavItems()
@@ -37,7 +37,7 @@ struct ChatRoomScreenView: View {
 
 
 // MARK: Extension... Toolbar Items
-extension ChatRoomScreenView {
+extension ChatRoomScreen {
     @ToolbarContentBuilder
     private func leadingNavItems() -> some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
@@ -74,6 +74,6 @@ extension ChatRoomScreenView {
 // MARK: Preview
 #Preview {
     NavigationStack {
-        ChatRoomScreenView(channel: .placeholder)
+        ChatRoomScreen(channel: .placeholder)
     }
 }

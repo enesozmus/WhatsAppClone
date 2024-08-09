@@ -1,5 +1,5 @@
 //
-//  BubbleTextView.swift
+//  BubbleText.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 31.07.2024.
@@ -9,14 +9,14 @@ import SwiftUI
 
 
 // MARK: View
-struct BubbleTextView: View {
+struct BubbleText: View {
     
     // MARK: Properties
     let item: MessageItem
     
     var body: some View {
         VStack(alignment: item.horizontalAlignment, spacing: 3) {
-            Text("Hello, World! How are you doing")
+            Text(item.text)
                 .padding(10)
                 .background(item.backgroundColor)
                 .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
@@ -53,8 +53,8 @@ struct BubbleTextView: View {
 // MARK: Preview
 #Preview {
     ScrollView {
-        BubbleTextView(item: .sentPlaceholder)
-        BubbleTextView(item: .receivedPlaceholder)
+        BubbleText(item: .sentPlaceholder)
+        BubbleText(item: .receivedPlaceholder)
     }
     .frame(maxWidth: .infinity)
     .background(.gray.opacity(0.4))

@@ -22,7 +22,7 @@ struct ChannelTabScreenView: View {
                 
                 ForEach(viewModel.channels) { channel in
                     NavigationLink {
-                        ChatRoomScreenView(channel: channel)
+                        ChatRoomScreen(channel: channel)
                     } label: {
                         ChannelItemView(channel: channel)
                     }
@@ -43,7 +43,7 @@ struct ChannelTabScreenView: View {
             }
             .navigationDestination(isPresented: $viewModel.navigateToChatRoom) {
                 if let newChannel = viewModel.newChannel {
-                    ChatRoomScreenView(channel: newChannel)
+                    ChatRoomScreen(channel: newChannel)
                 }
             }
         }
