@@ -26,6 +26,8 @@
 		DF705EB72C5E4E56000C0313 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF705EB62C5E4E56000C0313 /* UserService.swift */; };
 		DF8515CD2C661F0200B2E68D /* ChannelCreationText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */; };
 		DF8515CF2C661F5400B2E68D /* AdminMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8515CE2C661F5400B2E68D /* AdminMessageText.swift */; };
+		DF8515D22C66258000B2E68D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DF8515D12C66258000B2E68D /* Kingfisher */; };
+		DF8515D62C6625DA00B2E68D /* CircularProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8515D52C6625DA00B2E68D /* CircularProfileImageView.swift */; };
 		DF9045E92C5AC7220034450C /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045E32C5AC7220034450C /* AuthButton.swift */; };
 		DF9045EA2C5AC7220034450C /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045E42C5AC7220034450C /* AuthHeader.swift */; };
 		DF9045EB2C5AC7220034450C /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045E52C5AC7220034450C /* AuthTextField.swift */; };
@@ -82,6 +84,7 @@
 		DF705EB62C5E4E56000C0313 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationText.swift; sourceTree = "<group>"; };
 		DF8515CE2C661F5400B2E68D /* AdminMessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageText.swift; sourceTree = "<group>"; };
+		DF8515D52C6625DA00B2E68D /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
 		DF9045E32C5AC7220034450C /* AuthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		DF9045E42C5AC7220034450C /* AuthHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
 		DF9045E52C5AC7220034450C /* AuthTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 				DFD3161B2C5AB6EC00D78CD8 /* FirebaseStorage in Frameworks */,
 				DFD316172C5AB6EC00D78CD8 /* FirebaseDatabase in Frameworks */,
 				DFD316152C5AB6EC00D78CD8 /* FirebaseAuth in Frameworks */,
+				DF8515D22C66258000B2E68D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,10 +275,18 @@
 		DF705EB52C5E4E45000C0313 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				DF705EB62C5E4E56000C0313 /* UserService.swift */,
 				DFD2A21E2C6379C3004777C8 /* MessageService.swift */,
+				DF705EB62C5E4E56000C0313 /* UserService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		DF8515D32C6625B000B2E68D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				DF8515D52C6625DA00B2E68D /* CircularProfileImageView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		DF86E4922C63E7A400F91B58 /* Controller */ = {
@@ -338,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				DFC0146E2C57B9830081E0B6 /* App */,
+				DF8515D32C6625B000B2E68D /* Components */,
 				DFFC4F532C60FF8800EF66D8 /* Extensions */,
 				DF096C692C5CCF160039A642 /* GoogleService-Info.plist */,
 				DFF965022C5A4B8F00B69C6B /* Helpers */,
@@ -489,6 +502,7 @@
 				DFD316162C5AB6EC00D78CD8 /* FirebaseDatabase */,
 				DFD316182C5AB6EC00D78CD8 /* FirebaseMessaging */,
 				DFD3161A2C5AB6EC00D78CD8 /* FirebaseStorage */,
+				DF8515D12C66258000B2E68D /* Kingfisher */,
 			);
 			productName = WhatsAppClone;
 			productReference = DFC0145D2C57B9610081E0B6 /* WhatsAppClone.app */;
@@ -520,6 +534,7 @@
 			mainGroup = DFC014542C57B9610081E0B6;
 			packageReferences = (
 				DFD316132C5AB6EC00D78CD8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				DF8515D02C66258000B2E68D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = DFC0145E2C57B9610081E0B6 /* Products */;
 			projectDirPath = "";
@@ -551,6 +566,7 @@
 				DF5242052C5C0A540029EE1C /* RootScreen.swift in Sources */,
 				DF705EB42C5E36B5000C0313 /* NewGroupSetUpScreen.swift in Sources */,
 				DF0D06372C58FC6300FA8660 /* ChannelTabScreenView.swift in Sources */,
+				DF8515D62C6625DA00B2E68D /* CircularProfileImageView.swift in Sources */,
 				DF9045F12C5AC9100034450C /* AuthScreenModel.swift in Sources */,
 				DF9045E92C5AC7220034450C /* AuthButton.swift in Sources */,
 				DFD2A21F2C6379C4004777C8 /* MessageService.swift in Sources */,
@@ -799,6 +815,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DF8515D02C66258000B2E68D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 		DFD316132C5AB6EC00D78CD8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -810,6 +834,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DF8515D12C66258000B2E68D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF8515D02C66258000B2E68D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		DFD316142C5AB6EC00D78CD8 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DFD316132C5AB6EC00D78CD8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

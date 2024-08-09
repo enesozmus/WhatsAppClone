@@ -25,6 +25,18 @@ struct ChannelItem: Identifiable {
         return membersCount > 2
     }
     
+    var coverImageUrl: String? {
+        if let thumbnailUrl = thumbnailUrl {
+            return thumbnailUrl
+        }
+        
+        if isGroupChat == false {
+            return membersExcludingMe.first?.profileImageUrl
+        }
+        
+        return nil
+    }
+    
     var membersExcludingMe: [UserItem] {
         guard let currentUid = Auth.auth().currentUser?.uid else { return [] }
         return members.filter { $0.uid != currentUid }
