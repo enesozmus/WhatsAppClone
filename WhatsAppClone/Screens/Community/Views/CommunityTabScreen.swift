@@ -1,5 +1,5 @@
 //
-//  CommunityTabScreenView.swift
+//  CommunityTabScreen.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 30.07.2024.
@@ -9,7 +9,7 @@ import SwiftUI
 
 
 // MARK: View
-struct CommunityTabScreenView: View {
+struct CommunityTabScreen: View {
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -55,5 +55,5 @@ struct CommunityTabScreenView: View {
 
 // MARK: Preview
 #Preview {
-    CommunityTabScreenView()
+    CommunityTabScreen()
 }

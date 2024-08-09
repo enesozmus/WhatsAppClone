@@ -1,5 +1,5 @@
 //
-//  CallsTabScreenView.swift
+//  CallsTabScreen.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 30.07.2024.
@@ -9,7 +9,7 @@ import SwiftUI
 
 
 // MARK: View
-struct CallsTabScreenView: View {
+struct CallsTabScreen: View {
     
     @State private var searchText: String = ""
     @State private var callHistory: CallHistory = CallHistory.all
@@ -45,7 +45,7 @@ struct CallsTabScreenView: View {
 
 
 // MARK: Extension
-extension CallsTabScreenView {
+extension CallsTabScreen {
     
     @ToolbarContentBuilder
     private func leadingNavItem() -> some ToolbarContent {
@@ -151,5 +151,5 @@ private struct RecentCallItemView: View {
 
 // MARK: Preview
 #Preview {
-    CallsTabScreenView()
+    CallsTabScreen()
 }

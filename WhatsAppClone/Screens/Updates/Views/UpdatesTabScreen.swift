@@ -1,5 +1,5 @@
 //
-//  UpdatesTabScreenView.swift
+//  UpdatesTabScreen.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 29.07.2024.
@@ -9,7 +9,7 @@ import SwiftUI
 
 
 // MARK: View
-struct UpdatesTabScreenView: View {
+struct UpdatesTabScreen: View {
     
     @State private var searchText: String = ""
     
@@ -66,7 +66,7 @@ struct UpdatesTabScreenView: View {
 
 
 // MARK: Extension
-extension UpdatesTabScreenView {
+extension UpdatesTabScreen {
     enum Constant {
         static let imageDimen: CGFloat = 55
     }
@@ -104,7 +104,7 @@ private struct StatusSection: View {
     var body: some View {
         HStack {
             Circle()
-                .frame(width: UpdatesTabScreenView.Constant.imageDimen, height: UpdatesTabScreenView.Constant.imageDimen)
+                .frame(width: UpdatesTabScreen.Constant.imageDimen, height: UpdatesTabScreen.Constant.imageDimen)
             
             VStack(alignment: .leading) {
                 Text("My Status")
@@ -152,7 +152,7 @@ private struct RecentUpdatesItemView: View {
     var body: some View {
         HStack {
             Circle()
-                .frame(width: UpdatesTabScreenView.Constant.imageDimen, height: UpdatesTabScreenView.Constant.imageDimen)
+                .frame(width: UpdatesTabScreen.Constant.imageDimen, height: UpdatesTabScreen.Constant.imageDimen)
                 .foregroundStyle(.red)
             
             VStack(alignment: .leading) {
@@ -225,5 +225,5 @@ private struct SuggestedChannelItemView: View {
 
 // MARK: Preview
 #Preview {
-    UpdatesTabScreenView()
+    UpdatesTabScreen()
 }

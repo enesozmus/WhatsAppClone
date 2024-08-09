@@ -1,5 +1,5 @@
 //
-//  ChannelTabScreenView.swift
+//  ChannelTabScreen.swift
 //  WhatsAppClone
 //
 //  Created by enesozmus on 30.07.2024.
@@ -9,23 +9,28 @@ import SwiftUI
 
 
 // MARK: View
-struct ChannelTabScreenView: View {
+struct ChannelTabScreen: View {
     
     // MARK: Properties
     @State private var searchText: String = ""
     @StateObject private var viewModel = ChannelTabViewModel()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $viewModel.navRoutes) {
             List {
                 archivedButton()
                 
                 ForEach(viewModel.channels) { channel in
-                    NavigationLink {
-                        ChatRoomScreen(channel: channel)
+                    Button {
+                        viewModel.navRoutes.append(.chatRoom(channel))
                     } label: {
                         ChannelItemView(channel: channel)
                     }
+                    //                    NavigationLink {
+                    //                        ChatRoomScreen(channel: channel)
+                    //                    } label: {
+                    //                        ChannelItemView(channel: channel)
+                    //                    }
                 }
                 
                 inboxFooterView()
@@ -37,6 +42,9 @@ struct ChannelTabScreenView: View {
             .toolbar {
                 leadingNavItems()
                 trailingNavItems()
+            }
+            .navigationDestination(for: ChannelTabRoutes.self) { route in
+                destinationView(for: route)
             }
             .sheet(isPresented: $viewModel.showChatPartnerPickerView) {
                 ChatPartnerPickerScreen(onCreate: viewModel.onNewChannelCreation)
@@ -52,7 +60,7 @@ struct ChannelTabScreenView: View {
 
 
 // MARK: Extension
-extension ChannelTabScreenView {
+extension ChannelTabScreen {
     @ToolbarContentBuilder
     private func leadingNavItems() -> some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
@@ -127,10 +135,18 @@ extension ChannelTabScreenView {
         .font(.caption)
         .padding(.horizontal)
     }
+    
+    @ViewBuilder
+    private func destinationView(for route: ChannelTabRoutes) -> some View {
+        switch route {
+        case .chatRoom(let channel):
+            ChatRoomScreen(channel: channel)
+        }
+    }
 }
 
 
 // MARK: Preview
 #Preview {
-    ChannelTabScreenView()
+    ChannelTabScreen()
 }

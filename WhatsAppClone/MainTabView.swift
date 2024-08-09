@@ -24,28 +24,28 @@ struct MainTabView: View {
     var body: some View {
         TabView {
             //placeholderItemView("Updates")
-            UpdatesTabScreenView()
+            UpdatesTabScreen()
                 .tabItem {
                     Image(systemName: Tab.updates.icon)
                     Text(Tab.updates.title)
                 }
             
             //placeholderItemView("Calls")
-            CallsTabScreenView()
+            CallsTabScreen()
                 .tabItem {
                     Image(systemName: Tab.calls.icon)
                     Text(Tab.calls.title)
                 }
             
             //placeholderItemView("Communities")
-            CommunityTabScreenView()
+            CommunityTabScreen()
                 .tabItem {
                     Image(systemName: Tab.communities.icon)
                     Text(Tab.communities.title)
                 }
             
             //placeholderItemView("Chats")
-            ChannelTabScreenView()
+            ChannelTabScreen()
                 .tabItem {
                     Image(systemName: Tab.chats.icon)
                     Text(Tab.chats.title)
