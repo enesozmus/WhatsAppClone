@@ -21,7 +21,7 @@ final class RootScreenModel: ObservableObject {
                 self?.authState = latestAuthState
             }
         
-        // MARK: Test 
+        // MARK: Test
         //        AuthManager.testAccounts.forEach { email in
         //            registerTestAccount(with: email)
         //        }

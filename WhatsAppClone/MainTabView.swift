@@ -45,7 +45,7 @@ struct MainTabView: View {
                 }
             
             //placeholderItemView("Chats")
-            ChannelTabScreen()
+            ChannelTabScreen(currentUser)
                 .tabItem {
                     Image(systemName: Tab.chats.icon)
                     Text(Tab.chats.title)

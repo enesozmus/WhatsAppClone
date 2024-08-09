@@ -23,9 +23,11 @@ final class ChannelTabViewModel: ObservableObject {
     typealias ChannelId = String
     @Published var channelDictionary: [ChannelId: ChannelItem] = [:]
     
+    private let currentUser: UserItem
     
     // MARK: Init
-    init() {
+    init(_ currentUser: UserItem) {
+        self.currentUser = currentUser
         fetchCurrentUserChannels()
     }
     
@@ -41,7 +43,6 @@ final class ChannelTabViewModel: ObservableObject {
     // MARK: Private Methods
     private func fetchCurrentUserChannels() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        
         FirebaseConstants.UserChannelsRef.child(currentUid).observe(.value) { [weak self] snapshot in
             guard let dict = snapshot.value as? [String: Any] else { return }
             dict.forEach { key, value in
@@ -55,13 +56,13 @@ final class ChannelTabViewModel: ObservableObject {
     
     private func getChannel(with channelId: String) {
         FirebaseConstants.ChannelsRef.child(channelId).observe(.value) { [weak self] snapshot in
-            guard let dict = snapshot.value as? [String: Any] else { return }
+            guard let dict = snapshot.value as? [String: Any], let self = self else { return }
             var channel = ChannelItem(dict)
-            self?.getChannelMembers(channel) { members in
+            self.getChannelMembers(channel) { members in
                 channel.members = members
-                self?.channelDictionary[channelId] = channel
-                self?.reloadData()
-                //self?.channels.append(channel)
+                channel.members.append(self.currentUser)
+                self.channelDictionary[channelId] = channel
+                self.reloadData()
                 print("channel: \(channel.title)")
             }
         } withCancel: { error in
