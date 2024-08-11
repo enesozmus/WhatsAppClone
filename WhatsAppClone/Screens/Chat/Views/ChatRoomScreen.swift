@@ -28,9 +28,7 @@ struct ChatRoomScreen: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .safeAreaInset(edge: .bottom) {
-                TextInputArea(textMessage: $viewModel.textMessage) {
-                    viewModel.sendMessage()
-                }
+                bottomSafeAreaView()
             }
     }
 }
@@ -71,6 +69,19 @@ extension ChatRoomScreen {
                 
             } label: {
                 Image(systemName: "phone")
+            }
+        }
+    }
+    
+    private func bottomSafeAreaView() -> some View {
+        VStack(spacing: 0) {
+            
+            Divider()
+            MediaAttachmentPreview()
+            Divider()
+            
+            TextInputArea(textMessage: $viewModel.textMessage) {
+                viewModel.sendMessage()
             }
         }
     }

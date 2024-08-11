@@ -63,6 +63,7 @@
 		DFFC4F522C60FA8500EF66D8 /* ChannelTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F512C60FA8500EF66D8 /* ChannelTabViewModel.swift */; };
 		DFFC4F552C60FF9C00EF66D8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */; };
 		DFFC4F572C61276D00EF66D8 /* MessageItems+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFC4F562C61276D00EF66D8 /* MessageItems+Types.swift */; };
+		DFFD00F62C68BADB00A7BEB1 /* MediaAttachmentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFD00F52C68BADB00A7BEB1 /* MediaAttachmentPreview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		DFFC4F512C60FA8500EF66D8 /* ChannelTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTabViewModel.swift; sourceTree = "<group>"; };
 		DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		DFFC4F562C61276D00EF66D8 /* MessageItems+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageItems+Types.swift"; sourceTree = "<group>"; };
+		DFFD00F52C68BADB00A7BEB1 /* MediaAttachmentPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAttachmentPreview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +431,7 @@
 				DFF965002C5A4A7300B69C6B /* BubbleText.swift */,
 				DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */,
 				DFC694D62C591A6400887AC6 /* ChatRoomScreen.swift */,
+				DFFD00F52C68BADB00A7BEB1 /* MediaAttachmentPreview.swift */,
 				DFC694D42C59186900887AC6 /* TextInputArea.swift */,
 			);
 			path = Views;
@@ -588,6 +591,7 @@
 				DF0D062A2C58EA1E00FA8660 /* CallsTabScreen.swift in Sources */,
 				DFF964F82C5A42ED00B69C6B /* MessageListController.swift in Sources */,
 				DF705EB02C5E20C2000C0313 /* ChatPartnerPickerViewModel.swift in Sources */,
+				DFFD00F62C68BADB00A7BEB1 /* MediaAttachmentPreview.swift in Sources */,
 				DFFC4F502C60F98300EF66D8 /* ChannelItem.swift in Sources */,
 				DFC694D12C590EED00887AC6 /* SettingsTabScreen.swift in Sources */,
 				DFF965042C5A4BA900B69C6B /* CustomModifiers.swift in Sources */,
