@@ -198,7 +198,7 @@ final class ChatPartnerPickerViewModel: ObservableObject {
             // if existing DM, get the channel
             if let channelId = await verifyIfDirectChannelExits(with: chatPartner.uid) {
                 let snapshot = try await FirebaseConstants.ChannelsRef.child(channelId).getData()
-                var channelDict = snapshot.value as! [String: Any]
+                let channelDict = snapshot.value as! [String: Any]
                 var directChannel = ChannelItem(channelDict)
                 // MARK: Add current User to channel member
                 directChannel.members = selectedChatPartners
