@@ -24,6 +24,10 @@
 		DF705EB22C5E364C000C0313 /* SelectedChatPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF705EB12C5E364C000C0313 /* SelectedChatPartnerView.swift */; };
 		DF705EB42C5E36B5000C0313 /* NewGroupSetUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF705EB32C5E36B5000C0313 /* NewGroupSetUpScreen.swift */; };
 		DF705EB72C5E4E56000C0313 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF705EB62C5E4E56000C0313 /* UserService.swift */; };
+		DF76AF9E2C709AE2001122CD /* PhotosPickerItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76AF9D2C709AE2001122CD /* PhotosPickerItem+Extensions.swift */; };
+		DF76AFA02C709B17001122CD /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76AF9F2C709B17001122CD /* URL+Extensions.swift */; };
+		DF76AFA22C709C21001122CD /* MediaPickerItem_Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76AFA12C709C21001122CD /* MediaPickerItem_Types.swift */; };
+		DF76AFA62C709E32001122CD /* MediaPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76AFA52C709E32001122CD /* MediaPlayerView.swift */; };
 		DF8515CD2C661F0200B2E68D /* ChannelCreationText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */; };
 		DF8515CF2C661F5400B2E68D /* AdminMessageText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8515CE2C661F5400B2E68D /* AdminMessageText.swift */; };
 		DF8515D22C66258000B2E68D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DF8515D12C66258000B2E68D /* Kingfisher */; };
@@ -84,6 +88,10 @@
 		DF705EB12C5E364C000C0313 /* SelectedChatPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedChatPartnerView.swift; sourceTree = "<group>"; };
 		DF705EB32C5E36B5000C0313 /* NewGroupSetUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupSetUpScreen.swift; sourceTree = "<group>"; };
 		DF705EB62C5E4E56000C0313 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		DF76AF9D2C709AE2001122CD /* PhotosPickerItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotosPickerItem+Extensions.swift"; sourceTree = "<group>"; };
+		DF76AF9F2C709B17001122CD /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
+		DF76AFA12C709C21001122CD /* MediaPickerItem_Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPickerItem_Types.swift; sourceTree = "<group>"; };
+		DF76AFA52C709E32001122CD /* MediaPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerView.swift; sourceTree = "<group>"; };
 		DF8515CC2C661F0200B2E68D /* ChannelCreationText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelCreationText.swift; sourceTree = "<group>"; };
 		DF8515CE2C661F5400B2E68D /* AdminMessageText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMessageText.swift; sourceTree = "<group>"; };
 		DF8515D52C6625DA00B2E68D /* CircularProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProfileImageView.swift; sourceTree = "<group>"; };
@@ -289,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				DF8515D52C6625DA00B2E68D /* CircularProfileImageView.swift */,
+				DF76AFA52C709E32001122CD /* MediaPlayerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -456,6 +465,7 @@
 		DFF964FD2C5A497700B69C6B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DF76AFA12C709C21001122CD /* MediaPickerItem_Types.swift */,
 				DFF964FE2C5A498B00B69C6B /* MessageItem.swift */,
 				DFFC4F562C61276D00EF66D8 /* MessageItems+Types.swift */,
 			);
@@ -481,8 +491,10 @@
 		DFFC4F532C60FF8800EF66D8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */,
 				DFF4B1A42C665EF300BFE33E /* Date+Extensions.swift */,
+				DF76AF9D2C709AE2001122CD /* PhotosPickerItem+Extensions.swift */,
+				DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */,
+				DF76AF9F2C709B17001122CD /* URL+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -580,6 +592,7 @@
 				DFF965062C5A4C5900B69C6B /* BubbleTail.swift in Sources */,
 				DF52420B2C5C0D350029EE1C /* UserItem.swift in Sources */,
 				DFFC4F522C60FA8500EF66D8 /* ChannelTabViewModel.swift in Sources */,
+				DF76AFA22C709C21001122CD /* MediaPickerItem_Types.swift in Sources */,
 				DF9045EC2C5AC7220034450C /* LoginScreenView.swift in Sources */,
 				DF705EB22C5E364C000C0313 /* SelectedChatPartnerView.swift in Sources */,
 				DFCF79672C5ADAA60043A737 /* AuthProvider.swift in Sources */,
@@ -603,6 +616,7 @@
 				DF9045EE2C5AC8B40034450C /* SignUpScreenView.swift in Sources */,
 				DFF964FC2C5A47AD00B69C6B /* MessageList.swift in Sources */,
 				DFFC4F572C61276D00EF66D8 /* MessageItems+Types.swift in Sources */,
+				DF76AFA02C709B17001122CD /* URL+Extensions.swift in Sources */,
 				DFC694D72C591A6400887AC6 /* ChatRoomScreen.swift in Sources */,
 				DF705EAB2C5E1A98000C0313 /* ChatPartnerRowView.swift in Sources */,
 				DFC694D52C59186900887AC6 /* TextInputArea.swift in Sources */,
@@ -618,6 +632,8 @@
 				DFD316122C5AAC3A00D78CD8 /* BubbleAudio.swift in Sources */,
 				DF0D06392C58FE2100FA8660 /* ChannelItemView.swift in Sources */,
 				DFC014702C57B9B00081E0B6 /* MainTabView.swift in Sources */,
+				DF76AFA62C709E32001122CD /* MediaPlayerView.swift in Sources */,
+				DF76AF9E2C709AE2001122CD /* PhotosPickerItem+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

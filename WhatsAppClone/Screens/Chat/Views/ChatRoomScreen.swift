@@ -8,6 +8,8 @@
 import PhotosUI
 import SwiftUI
 
+
+// MARK: View
 struct ChatRoomScreen: View {
     
     // MARK: Properties
@@ -35,6 +37,13 @@ struct ChatRoomScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .safeAreaInset(edge: .bottom) {
                 bottomSafeAreaView()
+            }
+            .fullScreenCover(isPresented: $viewModel.videoPlayerState.show) {
+                if let player = viewModel.videoPlayerState.player {
+                    MediaPlayerView(player: player) {
+                        viewModel.dismissMediaPlayer()
+                    }
+                }
             }
     }
 }
@@ -83,7 +92,9 @@ extension ChatRoomScreen {
         VStack(spacing: 0) {
             Divider()
             if viewModel.showPhotoPickerPreview {
-                MediaAttachmentPreview(selectedPhotos: viewModel.selectedPhotos)
+                MediaAttachmentPreview(mediaAttachments: viewModel.mediaAttachments) { action in
+                    viewModel.handleMediaAttachmentPreview(action)
+                }
                 Divider()
             }
             

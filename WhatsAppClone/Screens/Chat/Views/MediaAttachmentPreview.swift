@@ -12,16 +12,18 @@ import SwiftUI
 struct MediaAttachmentPreview: View {
     
     // MARK: Properties
-    let selectedPhotos: [UIImage]
+    let mediaAttachments: [MediaAttachment]
+    let actionHandler: (_ action: UserAction) -> Void
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 //audioAttachmentPreview()
-                ForEach(selectedPhotos, id: \.self) { image in
-                    thumbnailImageView(image)
+                ForEach(mediaAttachments) { attachment in
+                    thumbnailImageView(attachment)
                 }
             }
+            .padding(.horizontal)
         }
         .frame(height: Constants.listHeight)
         .frame(maxWidth: .infinity)
@@ -32,11 +34,11 @@ struct MediaAttachmentPreview: View {
 
 // MARK: Extension
 extension MediaAttachmentPreview {
-    private func thumbnailImageView(_ image: UIImage) -> some View {
+    private func thumbnailImageView(_ attachment: MediaAttachment) -> some View {
         Button {
             
         } label: {
-            Image(uiImage: image)
+            Image(uiImage: attachment.thumbnail)
                 .resizable()
                 .scaledToFill()
                 .frame(width: Constants.imageDimen, height: Constants.imageDimen)
@@ -46,8 +48,10 @@ extension MediaAttachmentPreview {
                     cancelButton()
                 }
                 .overlay {
-                    playButton("play.fill")
+                    playButton("play.fill", attachment: attachment)
+                        .opacity(attachment.type == .video(UIImage(), .stubURL) ? 1 : 0)
                 }
+            
         }
     }
     
@@ -65,12 +69,13 @@ extension MediaAttachmentPreview {
                 .shadow(radius: 5)
                 .padding(2)
                 .bold()
+            
         }
     }
     
-    private func playButton(_ systemName: String) -> some View {
+    private func playButton(_ systemName: String, attachment: MediaAttachment) -> some View {
         Button {
-            
+            actionHandler(.play(attachment))
         } label: {
             Image(systemName: systemName)
                 .scaledToFit()
@@ -85,10 +90,10 @@ extension MediaAttachmentPreview {
         }
     }
     
-    private func audioAttachmentPreview() -> some View {
+    private func audioAttachmentPreview(_ attachment: MediaAttachment) -> some View {
         ZStack {
             LinearGradient(colors: [.green, .green.opacity(0.8), .teal], startPoint: .topLeading, endPoint: .bottom)
-            playButton("mic.fill")
+            playButton("mic.fill", attachment: attachment)
                 .padding(.bottom, 15)
         }
         .frame(width: Constants.imageDimen * 2, height: Constants.imageDimen)
@@ -108,14 +113,21 @@ extension MediaAttachmentPreview {
         }
     }
     
+    // MARK: Enums
     enum Constants {
         static let listHeight: CGFloat = 100
         static let imageDimen: CGFloat = 80
+    }
+    
+    enum UserAction {
+        case play(_ item: MediaAttachment)
     }
 }
 
 
 // MARK: Preview
 #Preview {
-    MediaAttachmentPreview(selectedPhotos: [])
+    MediaAttachmentPreview(mediaAttachments: []) { _ in
+        
+    }
 }
