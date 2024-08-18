@@ -102,9 +102,12 @@ extension ChatRoomScreen {
                 Divider()
             }
             
-            TextInputArea(textMessage: $viewModel.textMessage) { action in
-                viewModel.handleTextInputArea(action)
-            }
+            TextInputArea(
+                textMessage: $viewModel.textMessage,
+                isRecording: $viewModel.isRecodingVoiceMessage,
+                elapsedTime: $viewModel.elapsedVoiceMessageTime) { action in
+                    viewModel.handleTextInputArea(action)
+                }
         }
     }
 }

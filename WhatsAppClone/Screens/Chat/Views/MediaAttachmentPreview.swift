@@ -18,9 +18,12 @@ struct MediaAttachmentPreview: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                //audioAttachmentPreview()
                 ForEach(mediaAttachments) { attachment in
-                    thumbnailImageView(attachment)
+                    if attachment.type == .audio(.stubURL, .stubTimeInterval) {
+                        audioAttachmentPreview(attachment)
+                    } else {
+                        thumbnailImageView(attachment)
+                    }
                 }
             }
             .padding(.horizontal)
@@ -51,7 +54,6 @@ extension MediaAttachmentPreview {
                     playButton("play.fill", attachment: attachment)
                         .opacity(attachment.type == .video(UIImage(), .stubURL) ? 1 : 0)
                 }
-            
         }
     }
     
@@ -102,7 +104,7 @@ extension MediaAttachmentPreview {
             cancelButton(attachment)
         }
         .overlay(alignment: .bottomLeading) {
-            Text("Test mp3 file name here")
+            Text(attachment.fileURL?.absoluteString ?? "Unknown")
                 .lineLimit(1)
                 .font(.caption)
                 .padding(2)
