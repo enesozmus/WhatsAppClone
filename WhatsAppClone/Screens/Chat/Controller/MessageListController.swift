@@ -18,19 +18,18 @@ final class MessageListController: UIViewController {
         tableView.backgroundColor = .clear
         view.backgroundColor = .clear
         setUpViews()
-        setUpMessageListners()
+        setUpMessagesListeners()
     }
     
+    // MARK: Init & Deinit
     init(_ viewModel: ChatRoomViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
     deinit {
         subscriptions.forEach { $0.cancel() }
         subscriptions.removeAll()
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -46,6 +45,9 @@ final class MessageListController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.contentInset = .init(top: 0, left: 0, bottom: 60, right: 0)
+        tableView.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: 60, right: 0)
+        tableView.keyboardDismissMode = .onDrag
         return tableView
     }()
     
@@ -75,14 +77,36 @@ final class MessageListController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
     }
     
-    private func setUpMessageListners() {
+    private func setUpMessagesListeners() {
         let delay = 200
+        // messages
         viewModel.$messages
             .debounce(for: .milliseconds(delay), scheduler: DispatchQueue.main)
             .sink { [weak self] _ in
                 self?.tableView.reloadData()
-            }
-            .store(in: &subscriptions)
+            }.store(in: &subscriptions)
+        
+        // scroll to bottom
+        viewModel.$scrollToBottomRequest
+            .debounce(for: .milliseconds(delay), scheduler: DispatchQueue.main)
+            .sink { [weak self] scrollRequest in
+                if scrollRequest.scroll {
+                    self?.tableView.scrollToLastRow(at: .bottom, animated: scrollRequest.isAnimate)
+                }
+            }.store(in: &subscriptions)
+    }
+}
+
+
+// MARK: Extension
+private extension UITableView {
+    /// Extension of scroll to bottom action
+    func scrollToLastRow(at scrollPosition: UITableView.ScrollPosition, animated: Bool) {
+        guard numberOfRows(inSection: numberOfSections - 1) > 0 else { return }
+        let lastSectionIndex = numberOfSections - 1
+        let lastRowIndex = numberOfRows(inSection: lastSectionIndex) - 1
+        let lastRowIndexPath = IndexPath(row: lastRowIndex, section: lastSectionIndex)
+        scrollToRow(at: lastRowIndexPath, at: scrollPosition, animated: animated)
     }
 }
 

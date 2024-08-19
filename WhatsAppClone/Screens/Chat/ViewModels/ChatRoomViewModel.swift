@@ -25,6 +25,8 @@ final class ChatRoomViewModel: ObservableObject {
     @Published var isRecodingVoiceMessage: Bool = false
     @Published var elapsedVoiceMessageTime: TimeInterval = 0
     
+    @Published var scrollToBottomRequest: (scroll: Bool, isAnimate: Bool) = (false, false)
+    
     private(set) var channel: ChannelItem
     private var subscriptions = Set<AnyCancellable>()
     private var currentUser: UserItem?
@@ -33,6 +35,10 @@ final class ChatRoomViewModel: ObservableObject {
     
     var showPhotoPickerPreview: Bool {
         return !mediaAttachments.isEmpty || !photoPickerItems.isEmpty
+    }
+    
+    var disableSendButton: Bool {
+        return mediaAttachments.isEmpty && textMessage.isEmptyOrWhiteSpace
     }
     
     // MARK: Init
@@ -51,12 +57,87 @@ final class ChatRoomViewModel: ObservableObject {
         voiceRecorderService.tearDown()
     }
     
-    
-    // MARK: Public Methods
+    // MARK: Methods
     func sendMessage() {
+        if mediaAttachments.isEmpty {
+            sendTextMessage(textMessage)
+        } else {
+            sendMultipleMediaMessages(textMessage, attachments: mediaAttachments)
+            clearInputArea()
+        }
+    }
+    
+    private func sendTextMessage(_ text: String) {
         guard let currentUser else { return }
-        MessageService.sendTextMessage(to: channel, from: currentUser, textMessage) {[weak self] in
+        MessageService.sendTextMessages(to: channel, from: currentUser, text) { [weak self] in
             self?.textMessage = ""
+        }
+    }
+    
+    private func sendMultipleMediaMessages(_ text: String, attachments: [MediaAttachment]) {
+        for (index, attachment) in attachments.enumerated() {
+            let textMessage = index == 0 ? text : ""
+            
+            switch attachment.type {
+            case .photo:
+                sendPhotoMessage(text: textMessage, attachment)
+            case .video:
+                break
+            case .audio:
+                break
+            }
+        }
+    }
+    
+    func clearInputArea() {
+        textMessage = ""
+        mediaAttachments.removeAll()
+        photoPickerItems.removeAll()
+        UIApplication.dismissKeyboard()
+    }
+    
+    private func sendPhotoMessage(text: String, _ attachment: MediaAttachment) {
+        /// Upload the image to storage bucket
+        uploadImageToStorage(attachment) { [weak self] imageURL in
+            /// Store the metadata to our database
+            guard let self = self, let currentUser else { return }
+            
+            let uploadParams = MessageUploadParams(
+                channel: channel,
+                text: text,
+                type: .photo,
+                attachment: attachment,
+                thumbnailURL: imageURL.absoluteString,
+                sender: currentUser
+            )
+            
+            /// Upload photos to Database
+            MessageService.sendMediaMessage(to: channel, params: uploadParams) { [weak self] in
+                /// Scroll to bottom upon image upload success
+                self?.scrollToBottom(isAnimated: true)
+            }
+        }
+    }
+    
+    private func scrollToBottom(isAnimated: Bool) {
+        scrollToBottomRequest.scroll = true
+        scrollToBottomRequest.isAnimate = isAnimated
+    }
+    
+    ///
+    /// UPLOAD IMAGE
+    ///
+    ///
+    private func uploadImageToStorage(_ attachment: MediaAttachment, completion: @escaping(_ imageURL: URL) -> Void) {
+        FirebaseHelper.uploadImage(attachment.thumbnail, for: .photoMessage) { result in
+            switch result {
+            case .success(let imageURL):
+                completion(imageURL)
+            case .failure(let error):
+                print("Failed to upload Image to Storage: \(error.localizedDescription)")
+            }
+        } progressHandler: { progress in
+            print("UPLOAD IMAGE PROGRESS: \(progress)")
         }
     }
     
@@ -96,8 +177,6 @@ final class ChatRoomViewModel: ObservableObject {
         }
     }
     
-    
-    // MARK: Private Methods
     private func listenToAuthState() {
         AuthManager.shared.authState.receive(on: DispatchQueue.main).sink {[weak self] authState in
             guard let self = self else { return }

@@ -11,13 +11,14 @@ import Foundation
 struct MessageService {
     
     // → Send message with text
-    static func sendTextMessage(to channel: ChannelItem, from currentUser: UserItem, _ textMessage: String, onComplete: () -> Void) {
+    static func sendTextMessages(to channel: ChannelItem, from currentUser: UserItem, _ textMessage: String, onComplete: () -> Void) {
         let timeStamp = Date().timeIntervalSince1970
         guard let messageId = FirebaseConstants.MessagesRef.childByAutoId().key else { return }
         
         let channelDict: [String: Any] = [
             .lastMessage: textMessage,
-            .lastMessageTimeStamp: timeStamp
+            .lastMessageTimeStamp: timeStamp,
+            .lastMessageType: MessageType.text.title
         ]
         
         let messageDict: [String: Any] = [
@@ -33,6 +34,35 @@ struct MessageService {
         onComplete()
     }
     
+    // Send Message with Text and Media (audio, image, video)
+    static func sendMediaMessage(to channel: ChannelItem, params: MessageUploadParams, completion: @escaping () -> Void) {
+        guard let messageId = FirebaseConstants.MessagesRef.childByAutoId().key else { return }
+        let timeStamp = Date().timeIntervalSince1970
+        
+        let channelDict: [String: Any] = [
+            .lastMessage: params.text,
+            .lastMessageTimeStamp: timeStamp,
+            .lastMessageType: params.type.title
+        ]
+        
+        var messageDict: [String: Any] = [
+            .text: params.text,
+            .type: params.type.title,
+            .timeStamp: timeStamp,
+            .ownerUid: params.ownerUid,
+        ]
+        
+        // Photo Messages
+        messageDict[.thumbnailUrl] = params.thumbnailURL ?? nil
+        messageDict[.thumbnailWidth] = params.thumbnailWidth ?? nil
+        messageDict[.thumbnailHeight] = params.thumbnailHeight ?? nil
+        
+        FirebaseConstants.ChannelsRef.child(channel.id).updateChildValues(channelDict)
+        FirebaseConstants.MessagesRef.child(channel.id).child(messageId).setValue(messageDict)
+        
+        completion()
+    }
+    
     static func getMessages(for channel: ChannelItem, completion: @escaping([MessageItem]) -> Void) {
         FirebaseConstants.MessagesRef.child(channel.id).observe(.value) { snapshot in
             guard let dict = snapshot.value as? [String: Any] else { return }
@@ -45,7 +75,6 @@ struct MessageService {
                     messages.sort { $0.timeStamp < $1.timeStamp }
                     completion(messages)
                 }
-                
             }
         } withCancel: { error in
             print("Failed to get messages for \(channel.title)")

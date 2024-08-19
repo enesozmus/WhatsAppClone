@@ -14,26 +14,47 @@ enum AdminMessageType: String {
     case channelNameChanged
 }
 
-enum MessageType {
+
+
+// MARK: MessageType
+enum MessageType: Hashable {
     case admin(_ type: AdminMessageType), text, photo, video, audio
     
     var title: String {
         switch self {
-        case .admin:
-            return "admin"
-            
         case .text:
             return "text"
-            
         case .photo:
             return "photo"
-            
         case .video:
             return "video"
-            
         case .audio:
             return "audio"
-            
+        case .admin:
+            return "admin"
+        }
+    }
+    
+    var iconName: String {
+        switch self {
+        case .admin:
+            return "megaphone.fill"
+        case .text:
+            return ""
+        case .photo:
+            return "photo.fill"
+        case .video:
+            return "video.fill"
+        case .audio:
+            return "mic.fill"
+        }
+    }
+    
+    var isAdminMessaage: Bool {
+        if case .admin = self {
+            return true
+        } else {
+            return false
         }
     }
     
@@ -41,16 +62,12 @@ enum MessageType {
         switch stringValue {
         case "text":
             self = .text
-            
         case "photo":
             self = .photo
-            
         case "video":
             self = .video
-            
         case "audio":
             self = .audio
-            
         default:
             if let adminMessageType = AdminMessageType(rawValue: stringValue) {
                 self = .admin(adminMessageType)

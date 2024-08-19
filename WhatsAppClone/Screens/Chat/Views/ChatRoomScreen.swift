@@ -105,7 +105,7 @@ extension ChatRoomScreen {
             TextInputArea(
                 textMessage: $viewModel.textMessage,
                 isRecording: $viewModel.isRecodingVoiceMessage,
-                elapsedTime: $viewModel.elapsedVoiceMessageTime) { action in
+                elapsedTime: $viewModel.elapsedVoiceMessageTime, disableSendButton: viewModel.disableSendButton) { action in
                     viewModel.handleTextInputArea(action)
                 }
         }

@@ -5,6 +5,7 @@
 //  Created by enesozmus on 31.07.2024.
 //
 
+import Kingfisher
 import SwiftUI
 
 
@@ -23,7 +24,7 @@ struct BubbleImage: View {
                     .offset(y: 5)
             }
             
-            messageTextView()
+            messageImageView()
                 .shadow(color: Color(.systemGray3).opacity(0.1), radius: 5, x: 0, y: 20)
                 .overlay {
                     playButton()
@@ -41,25 +42,21 @@ struct BubbleImage: View {
 
 // MARK: Extension
 extension BubbleImage {
-    private func messageTextView() -> some View {
+    private func messageImageView() -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            Image(.stubImage0)
+            KFImage(URL(string: item.thumbnailUrl ?? ""))
                 .resizable()
+                .placeholder { ProgressView() }
                 .scaledToFill()
-                .frame(width: 220, height: 180)
-                .clipShape(
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                )
-                .background {
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(Color(.systemGray5))
-                }
+                .frame(width: item.imageSize.width, height: item.imageSize.height)
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(Color(.systemGray5)))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
                         .stroke(Color(.systemGray5))
                 )
                 .padding(5)
-                .overlay(alignment:.bottomTrailing) {
+                .overlay(alignment: .bottomTrailing) {
                     timeStampTextView()
                 }
             
@@ -67,7 +64,7 @@ extension BubbleImage {
                 Text(item.text)
                     .padding([.horizontal, .bottom], 8)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .frame(width: 220)
+                    .frame(width: item.imageSize.width)
             }
         }
         .background(item.backgroundColor)

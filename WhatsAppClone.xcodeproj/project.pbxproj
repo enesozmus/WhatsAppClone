@@ -40,6 +40,8 @@
 		DF9045EC2C5AC7220034450C /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045E62C5AC7220034450C /* LoginScreenView.swift */; };
 		DF9045EE2C5AC8B40034450C /* SignUpScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045ED2C5AC8B40034450C /* SignUpScreenView.swift */; };
 		DF9045F12C5AC9100034450C /* AuthScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9045F02C5AC9100034450C /* AuthScreenModel.swift */; };
+		DFA3AD832C7375C200F22F4B /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3AD822C7375C200F22F4B /* UIApplication+Extensions.swift */; };
+		DFA3AD852C73787D00F22F4B /* UIWindowScene+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA3AD842C73787D00F22F4B /* UIWindowScene+Extensions.swift */; };
 		DFC014612C57B9610081E0B6 /* WhatsAppCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC014602C57B9610081E0B6 /* WhatsAppCloneApp.swift */; };
 		DFC014652C57B9620081E0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC014642C57B9620081E0B6 /* Assets.xcassets */; };
 		DFC014682C57B9620081E0B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFC014672C57B9620081E0B6 /* Preview Assets.xcassets */; };
@@ -106,6 +108,8 @@
 		DF9045E62C5AC7220034450C /* LoginScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		DF9045ED2C5AC8B40034450C /* SignUpScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreenView.swift; sourceTree = "<group>"; };
 		DF9045F02C5AC9100034450C /* AuthScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthScreenModel.swift; sourceTree = "<group>"; };
+		DFA3AD822C7375C200F22F4B /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
+		DFA3AD842C73787D00F22F4B /* UIWindowScene+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindowScene+Extensions.swift"; sourceTree = "<group>"; };
 		DFC0145D2C57B9610081E0B6 /* WhatsAppClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsAppClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC014602C57B9610081E0B6 /* WhatsAppCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsAppCloneApp.swift; sourceTree = "<group>"; };
 		DFC014642C57B9620081E0B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -503,6 +507,8 @@
 				DF76AF9D2C709AE2001122CD /* PhotosPickerItem+Extensions.swift */,
 				DFFC4F542C60FF9C00EF66D8 /* String+Extensions.swift */,
 				DF7426112C70E23A0092C1F9 /* TimeInterval+Extensions.swift */,
+				DFA3AD822C7375C200F22F4B /* UIApplication+Extensions.swift */,
+				DFA3AD842C73787D00F22F4B /* UIWindowScene+Extensions.swift */,
 				DF76AF9F2C709B17001122CD /* URL+Extensions.swift */,
 			);
 			path = Extensions;
@@ -592,6 +598,7 @@
 			files = (
 				DFE8A0AF2C7341C600A31081 /* FirebaseHelper.swift in Sources */,
 				DF5242052C5C0A540029EE1C /* RootScreen.swift in Sources */,
+				DFA3AD832C7375C200F22F4B /* UIApplication+Extensions.swift in Sources */,
 				DF705EB42C5E36B5000C0313 /* NewGroupSetUpScreen.swift in Sources */,
 				DF0D06372C58FC6300FA8660 /* ChannelTabScreen.swift in Sources */,
 				DF8515D62C6625DA00B2E68D /* CircularProfileImageView.swift in Sources */,
@@ -613,6 +620,7 @@
 				DFFC4F552C60FF9C00EF66D8 /* String+Extensions.swift in Sources */,
 				DF0D062A2C58EA1E00FA8660 /* CallsTabScreen.swift in Sources */,
 				DFF964F82C5A42ED00B69C6B /* MessageListController.swift in Sources */,
+				DFA3AD852C73787D00F22F4B /* UIWindowScene+Extensions.swift in Sources */,
 				DF705EB02C5E20C2000C0313 /* ChatPartnerPickerViewModel.swift in Sources */,
 				DFFD00F62C68BADB00A7BEB1 /* MediaAttachmentPreview.swift in Sources */,
 				DFFC4F502C60F98300EF66D8 /* ChannelItem.swift in Sources */,
