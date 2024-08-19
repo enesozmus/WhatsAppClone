@@ -58,6 +58,7 @@
 		DFD316172C5AB6EC00D78CD8 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = DFD316162C5AB6EC00D78CD8 /* FirebaseDatabase */; };
 		DFD316192C5AB6EC00D78CD8 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = DFD316182C5AB6EC00D78CD8 /* FirebaseMessaging */; };
 		DFD3161B2C5AB6EC00D78CD8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DFD3161A2C5AB6EC00D78CD8 /* FirebaseStorage */; };
+		DFE8A0AF2C7341C600A31081 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8A0AE2C7341C600A31081 /* FirebaseHelper.swift */; };
 		DFF4B1A52C665EF300BFE33E /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF4B1A42C665EF300BFE33E /* Date+Extensions.swift */; };
 		DFF964F82C5A42ED00B69C6B /* MessageListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF964F72C5A42ED00B69C6B /* MessageListController.swift */; };
 		DFF964FC2C5A47AD00B69C6B /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF964FB2C5A47AD00B69C6B /* MessageList.swift */; };
@@ -121,6 +122,7 @@
 		DFD2A21E2C6379C3004777C8 /* MessageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		DFD2A2212C638AF7004777C8 /* ChatRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewModel.swift; sourceTree = "<group>"; };
 		DFD316112C5AAC3A00D78CD8 /* BubbleAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleAudio.swift; sourceTree = "<group>"; };
+		DFE8A0AE2C7341C600A31081 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		DFF4B1A42C665EF300BFE33E /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		DFF964F72C5A42ED00B69C6B /* MessageListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListController.swift; sourceTree = "<group>"; };
 		DFF964FB2C5A47AD00B69C6B /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				DFF965032C5A4BA900B69C6B /* CustomModifiers.swift */,
+				DFE8A0AE2C7341C600A31081 /* FirebaseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFE8A0AF2C7341C600A31081 /* FirebaseHelper.swift in Sources */,
 				DF5242052C5C0A540029EE1C /* RootScreen.swift in Sources */,
 				DF705EB42C5E36B5000C0313 /* NewGroupSetUpScreen.swift in Sources */,
 				DF0D06372C58FC6300FA8660 /* ChannelTabScreen.swift in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 // MARK: Handles sending and fetching messages and setting reactions
 struct MessageService {
     
+    // → Send message with text
     static func sendTextMessage(to channel: ChannelItem, from currentUser: UserItem, _ textMessage: String, onComplete: () -> Void) {
         let timeStamp = Date().timeIntervalSince1970
         guard let messageId = FirebaseConstants.MessagesRef.childByAutoId().key else { return }
@@ -49,5 +50,39 @@ struct MessageService {
         } withCancel: { error in
             print("Failed to get messages for \(channel.title)")
         }
+    }
+}
+
+// MARK: MessageNode
+struct MessageNode {
+    var messages: [MessageItem]
+    var currentCursor: String?
+    static let emptyNode = MessageNode(messages: [], currentCursor: nil)
+}
+
+// MARK: MessageUploadParams
+struct MessageUploadParams {
+    let channel: ChannelItem
+    let text: String
+    let type: MessageType
+    let attachment: MediaAttachment
+    var thumbnailURL: String?
+    var videoURL: String?
+    var sender: UserItem
+    var audioURL: String?
+    var audioDuration: TimeInterval?
+    
+    var ownerUid: String {
+        return sender.uid
+    }
+    
+    var thumbnailWidth: CGFloat? {
+        guard type == .photo || type == .video else { return nil }
+        return attachment.thumbnail.size.width
+    }
+    
+    var thumbnailHeight: CGFloat? {
+        guard type == .photo || type == .video else { return nil }
+        return attachment.thumbnail.size.height
     }
 }
