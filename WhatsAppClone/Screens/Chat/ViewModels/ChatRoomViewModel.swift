@@ -57,7 +57,13 @@ final class ChatRoomViewModel: ObservableObject {
         voiceRecorderService.tearDown()
     }
     
+    
     // MARK: Methods
+    
+    ///
+    /// MAIN METHOD
+    ///
+    ///
     func sendMessage() {
         if mediaAttachments.isEmpty {
             sendTextMessage(textMessage)
@@ -82,7 +88,7 @@ final class ChatRoomViewModel: ObservableObject {
             case .photo:
                 sendPhotoMessage(text: textMessage, attachment)
             case .video:
-                break
+                sendVideoMessage(text: textMessage, attachment)
             case .audio:
                 break
             }
@@ -96,6 +102,10 @@ final class ChatRoomViewModel: ObservableObject {
         UIApplication.dismissKeyboard()
     }
     
+    ///
+    /// PHOTO
+    ///
+    ///
     private func sendPhotoMessage(text: String, _ attachment: MediaAttachment) {
         /// Upload the image to storage bucket
         uploadImageToStorage(attachment) { [weak self] imageURL in
@@ -111,7 +121,7 @@ final class ChatRoomViewModel: ObservableObject {
                 sender: currentUser
             )
             
-            /// Upload photos to Database
+            /// Upload photos to Database (saves the metadatas and urls to database )
             MessageService.sendMediaMessage(to: channel, params: uploadParams) { [weak self] in
                 /// Scroll to bottom upon image upload success
                 self?.scrollToBottom(isAnimated: true)
@@ -119,9 +129,33 @@ final class ChatRoomViewModel: ObservableObject {
         }
     }
     
-    private func scrollToBottom(isAnimated: Bool) {
-        scrollToBottomRequest.scroll = true
-        scrollToBottomRequest.isAnimate = isAnimated
+    ///
+    /// VIDEO
+    ///
+    ///
+    private func sendVideoMessage(text: String, _ attachment: MediaAttachment) {
+        uploadFileToStorage(for: .videoMessage, attachment) { [weak self] videoURL in
+            /// Upload the video thumbnail
+            self?.uploadImageToStorage(attachment, completion: { [weak self] imageURL in
+                guard let self = self, let currentUser else { return }
+                
+                let uploadParams = MessageUploadParams(
+                    channel: self.channel,
+                    text: text,
+                    type: .video,
+                    attachment: attachment,
+                    thumbnailURL: imageURL.absoluteString,
+                    videoURL: videoURL.absoluteString,
+                    sender: currentUser
+                )
+                
+                /// Upload videos to Database (saves the metadatas and urls to database )
+                MessageService.sendMediaMessage(to: self.channel, params: uploadParams) { [weak self] in
+                    /// Scroll to bottom upon video upload success
+                    self?.scrollToBottom(isAnimated: true)
+                }
+            })
+        }
     }
     
     ///
@@ -139,6 +173,33 @@ final class ChatRoomViewModel: ObservableObject {
         } progressHandler: { progress in
             print("UPLOAD IMAGE PROGRESS: \(progress)")
         }
+    }
+    
+    ///
+    /// UPLOAD FILE
+    ///
+    ///
+    private func uploadFileToStorage(for uploadType: FirebaseHelper.UploadType, _ attachment: MediaAttachment, completion: @escaping(_ fileURL: URL) -> Void) {
+        guard let fileURLToUpload = attachment.fileURL else { return }
+        FirebaseHelper.uploadFile(for: uploadType, fileURL: fileURLToUpload) { result  in
+            switch result {
+            case .success(let fileURL):
+                completion(fileURL)
+            case .failure(let error):
+                print("Failed to upload file to Storage: \(error.localizedDescription)")
+            }
+        } progressHandler: { progress in
+            print("UPLOAD FILE PROGRESS: \(progress)")
+        }
+    }
+    
+    ///
+    /// SCROLL TO BOTTOM
+    ///
+    ///
+    private func scrollToBottom(isAnimated: Bool) {
+        scrollToBottomRequest.scroll = true
+        scrollToBottomRequest.isAnimate = isAnimated
     }
     
     func handleTextInputArea(_ action: TextInputArea.UserAction) {

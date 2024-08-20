@@ -10,7 +10,7 @@ import Foundation
 // MARK: Handles sending and fetching messages and setting reactions
 struct MessageService {
     
-    // → Send message with text
+    /// → Send message with text
     static func sendTextMessages(to channel: ChannelItem, from currentUser: UserItem, _ textMessage: String, onComplete: () -> Void) {
         let timeStamp = Date().timeIntervalSince1970
         guard let messageId = FirebaseConstants.MessagesRef.childByAutoId().key else { return }
@@ -34,7 +34,7 @@ struct MessageService {
         onComplete()
     }
     
-    // Send Message with Text and Media (audio, image, video)
+    /// → Send Message with Text and Media (audio, image, video)
     static func sendMediaMessage(to channel: ChannelItem, params: MessageUploadParams, completion: @escaping () -> Void) {
         guard let messageId = FirebaseConstants.MessagesRef.childByAutoId().key else { return }
         let timeStamp = Date().timeIntervalSince1970
@@ -52,10 +52,11 @@ struct MessageService {
             .ownerUid: params.ownerUid,
         ]
         
-        // Photo Messages
+        // Message Photo & Video
         messageDict[.thumbnailUrl] = params.thumbnailURL ?? nil
         messageDict[.thumbnailWidth] = params.thumbnailWidth ?? nil
         messageDict[.thumbnailHeight] = params.thumbnailHeight ?? nil
+        messageDict[.videoURL] = params.videoURL ?? nil
         
         FirebaseConstants.ChannelsRef.child(channel.id).updateChildValues(channelDict)
         FirebaseConstants.MessagesRef.child(channel.id).child(messageId).setValue(messageDict)
