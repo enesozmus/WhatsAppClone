@@ -10,7 +10,6 @@ import Foundation
 import PhotosUI
 import SwiftUI
 
-@MainActor
 final class ChatRoomViewModel: ObservableObject {
     
     // MARK: Properties
@@ -90,7 +89,7 @@ final class ChatRoomViewModel: ObservableObject {
             case .video:
                 sendVideoMessage(text: textMessage, attachment)
             case .audio:
-                break
+                sendVoiceMessage(text: textMessage, attachment)
             }
         }
     }
@@ -121,7 +120,7 @@ final class ChatRoomViewModel: ObservableObject {
                 sender: currentUser
             )
             
-            /// Upload photos to Database (saves the metadatas and urls to database )
+            /// Upload the photos to Database (saves the metadatas and urls to database )
             MessageService.sendMediaMessage(to: channel, params: uploadParams) { [weak self] in
                 /// Scroll to bottom upon image upload success
                 self?.scrollToBottom(isAnimated: true)
@@ -134,8 +133,9 @@ final class ChatRoomViewModel: ObservableObject {
     ///
     ///
     private func sendVideoMessage(text: String, _ attachment: MediaAttachment) {
+        /// Upload the videos to storage bucket
         uploadFileToStorage(for: .videoMessage, attachment) { [weak self] videoURL in
-            /// Upload the video thumbnail
+            /// Upload the video thumbnail to storage bucket
             self?.uploadImageToStorage(attachment, completion: { [weak self] imageURL in
                 guard let self = self, let currentUser else { return }
                 
@@ -149,12 +149,44 @@ final class ChatRoomViewModel: ObservableObject {
                     sender: currentUser
                 )
                 
-                /// Upload videos to Database (saves the metadatas and urls to database )
+                /// Upload the videos to Database (saves the metadatas and urls to database )
                 MessageService.sendMediaMessage(to: self.channel, params: uploadParams) { [weak self] in
                     /// Scroll to bottom upon video upload success
                     self?.scrollToBottom(isAnimated: true)
                 }
             })
+        }
+    }
+    
+    ///
+    /// VOICE
+    ///
+    ///
+    private func sendVoiceMessage(text: String, _ attachment: MediaAttachment) {
+        guard let duration = attachment.duration, let currentUser else { return }
+        /// Upload the voices to storage bucket
+        uploadFileToStorage(for: .voiceMessage, attachment) { [weak self] fileURL in
+            guard let self else { return }
+            
+            let uploadParams = MessageUploadParams(
+                channel: self.channel,
+                text: text,
+                type: .audio,
+                attachment: attachment,
+                sender: currentUser,
+                audioURL: fileURL.absoluteString,
+                audioDuration: duration
+            )
+            
+            /// Upload voices to Database (saves the metadatas and urls to database )
+            MessageService.sendMediaMessage(to: self.channel, params: uploadParams) { [weak self] in
+                /// Scroll to bottom upon video upload success
+                self? .scrollToBottom(isAnimated: true)
+            }
+            
+            if !text.isEmptyOrWhiteSpace {
+                sendTextMessage(text)
+            }
         }
     }
     
@@ -179,6 +211,7 @@ final class ChatRoomViewModel: ObservableObject {
     /// UPLOAD FILE
     ///
     ///
+    /// This is going to be responsible for uploading both video and voice files to our storage bucket
     private func uploadFileToStorage(for uploadType: FirebaseHelper.UploadType, _ attachment: MediaAttachment, completion: @escaping(_ fileURL: URL) -> Void) {
         guard let fileURLToUpload = attachment.fileURL else { return }
         FirebaseHelper.uploadFile(for: uploadType, fileURL: fileURLToUpload) { result  in
@@ -299,6 +332,7 @@ final class ChatRoomViewModel: ObservableObject {
                 self?.createAudioAttachment(from: audioURL, audioDuration)
             }
         } else {
+            // start recording
             voiceRecorderService.startRecording()
         }
     }
@@ -320,6 +354,7 @@ final class ChatRoomViewModel: ObservableObject {
         }.store(in: &subscriptions)
     }
     
+    @MainActor
     private func parsePhotoPickerItems(_ photoPickerItems: [PhotosPickerItem]) async {
         for photoItem in photoPickerItems {
             if photoItem.isVideo {

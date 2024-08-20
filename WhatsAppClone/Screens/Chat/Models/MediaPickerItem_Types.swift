@@ -7,9 +7,12 @@
 
 import SwiftUI
 
+
+/// Transferable is a part of SwiftUI framework
 struct VideoPickerTransferable: Transferable {
     let url: URL
     
+    /// The propertise be inherited from Transferable protocol
     static var transferRepresentation: some TransferRepresentation {
         FileRepresentation(contentType: .movie) { exportingFile in
             return .init(exportingFile.url)
@@ -27,15 +30,12 @@ struct VideoPickerTransferable: Transferable {
 struct MediaAttachment: Identifiable {
     let id: String
     let type: MediaAttachmentType
-    
     var thumbnail: UIImage {
         switch type {
         case .photo(let thumbnail):
             return thumbnail
-            
         case .video(let thumbnail, _):
             return thumbnail
-            
         case .audio:
             return UIImage()
         }
@@ -45,15 +45,23 @@ struct MediaAttachment: Identifiable {
         switch type {
         case .photo:
             return nil
-            
         case .video(_, let fileURL):
             return fileURL
-            
         case .audio(let voiceURL, _):
             return voiceURL
         }
     }
+    
+    var duration: TimeInterval? {
+        switch type {
+        case .audio(_, let duration):
+            return duration
+        default:
+            return nil
+        }
+    }
 }
+
 
 enum MediaAttachmentType: Equatable {
     case photo(_ thumbnail: UIImage)
@@ -62,9 +70,8 @@ enum MediaAttachmentType: Equatable {
     
     static func == (lhs: MediaAttachmentType, rhs: MediaAttachmentType) -> Bool {
         switch(lhs, rhs) {
-        case (.photo, .photo), (.video, .video), (.audio, .audio):
+        case (.photo,.photo), (.video, .video), (.audio, .audio):
             return true
-            
         default:
             return false
         }

@@ -20,6 +20,8 @@ struct MessageItem: Identifiable {
     var thumbnailWidth: CGFloat?
     var thumbnailHeight: CGFloat?
     var videoURL: String?
+    var audioURL: String?
+    var audioDuration: TimeInterval?
     
     var direction: MessageDirection {
         return ownerUid == Auth.auth().currentUser?.uid ? .sent : .received
@@ -107,6 +109,8 @@ extension MessageItem {
         self.thumbnailWidth = dict[.thumbnailWidth] as? CGFloat ?? nil
         self.thumbnailHeight = dict[.thumbnailHeight] as? CGFloat ?? nil
         self.videoURL = dict[.videoURL] as? String ?? nil
+        self.audioURL = dict[.audioURL] as? String ?? nil
+        self.audioDuration = dict[.audioDuration] as? TimeInterval ?? nil
     }
 }
 
@@ -120,4 +124,6 @@ extension String {
     static let thumbnailWidth = "thumbnailWidth"
     static let thumbnailHeight = "thumbnailHeight"
     static let videoURL = "videoURL"
+    static let audioURL = "audioURL"
+    static let audioDuration = "audioDuration"
 }

@@ -159,12 +159,13 @@ extension MessageListController: UITableViewDelegate, UITableViewDataSource {
         let messageItem = viewModel.messages[indexPath.row]
         switch messageItem.type {
         case .video:
-            guard let
-                    videoURLString = messageItem.videoURL,
-                  let
-                    videoURL = URL(string: videoURLString)
-            else { return }
+            guard let videoURLString = messageItem.videoURL,
+                  let videoURL = URL(string: videoURLString) else { return }
             viewModel.showMediaPlayer(videoURL)
+        case .audio:
+            guard let audioURLString = messageItem.audioURL,
+                  let audioURL = URL(string: audioURLString) else { return }
+            viewModel.showMediaPlayer(audioURL)
         default:
             break
         }
